@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-05-13T16:15:00Z",
+  "title": "Design System: H2 Design",
+  "extensions": {
+    "colorMeta": {
+      "primary": { "role": "primary", "displayName": "Construction Orange", "canonical": "#F59E3F", "tonalRamp": ["#fdf2e8", "#fbe5d1", "#f9d8b9", "#f7cba2", "#f59e3f", "#c47e32", "#935f26", "#623f19"] },
+      "secondary": { "role": "secondary", "displayName": "Architectural Navy", "canonical": "#1B2A41", "tonalRamp": ["#e8eaf0", "#d1d5e1", "#bbc0d2", "#a4abc3", "#1b2a41", "#162234", "#101927", "#0b111a"] },
+      "neutral-text": { "role": "neutral", "displayName": "Obsidian", "canonical": "#111111", "tonalRamp": ["#e7e7e7", "#cfcfcf", "#b7b7b7", "#9f9f9f", "#111111", "#0e0e0e", "#0a0a0a", "#070707"] },
+      "neutral-bg": { "role": "neutral", "displayName": "Pure Canvas", "canonical": "#ffffff", "tonalRamp": ["#ffffff", "#f2f2f2", "#e6e6e6", "#d9d9d9", "#cccccc", "#bfbfbf", "#b3b3b3", "#a6a6a6"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headlines only." },
+      "headline": { "displayName": "Headline", "purpose": "Major section titles." },
+      "title": { "displayName": "Title", "purpose": "Subsection introductions." },
+      "body": { "displayName": "Body", "purpose": "Standard paragraphs." }
+    },
+    "shadows": [
+      { "name": "hover-lift", "value": "0 10px 30px rgba(0,0,0,0.05)", "purpose": "Tactile feedback on hover." }
+    ],
+    "breakpoints": [
+      { "name": "md", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Dark Pill Button",
+      "kind": "button",
+      "refersTo": "button-dark",
+      "description": "Primary call to action.",
+      "html": "<button class=\"ds-btn-dark\">Let's Talk</button>",
+      "css": ".ds-btn-dark { display: inline-flex; align-items: center; justify-content: center; background-color: #111111; color: #ffffff; padding: 14px 28px; border-radius: 50px; font-weight: 500; font-size: 1rem; border: none; cursor: pointer; transition: opacity 0.3s ease; font-family: 'Outfit', sans-serif; } .ds-btn-dark:hover { opacity: 0.85; }"
+    },
+    {
+      "name": "Circle Icon Button",
+      "kind": "button",
+      "refersTo": "button-circle",
+      "description": "Secondary action or navigation control.",
+      "html": "<button class=\"ds-btn-circle\">→</button>",
+      "css": ".ds-btn-circle { width: 48px; height: 48px; border-radius: 50%; background: #ffffff; border: 1px solid #eeeeee; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; color: #111111; font-family: 'Outfit', sans-serif; } .ds-btn-circle:hover { background: #111111; color: #ffffff; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Highly structured, vast white space, letting the work speak",
+    "overview": "The H2 Design interface feels airy, premium, and calm. It avoids dense, cluttered layouts to emphasize structural solidity and the high quality of the architectural work. The generous use of white space and precise typography creates a \"Master Builder's Ledger\" aesthetic that reassures diaspora clients through rigorous organization and clear presentation.",
+    "keyCharacteristics": [
+      "Restrained color palette dominated by white space and crisp typography.",
+      "Exacting alignment and structural grids.",
+      "High-contrast elements that prioritize legibility.",
+      "Photography takes center stage."
+    ],
+    "rules": [
+      { "name": "The One Voice Rule", "body": "The primary orange accent is used on ≤10% of any given screen. The interface relies on structure and typography for hierarchy, not color.", "section": "colors" },
+      { "name": "The Scale Contrast Rule", "body": "Always maintain a minimum 1.25x size ratio between adjacent typographic levels to ensure clear visual hierarchy.", "section": "typography" },
+      { "name": "The Flat-By-Default Rule", "body": "Surfaces are flat at rest. Shadows appear only as a response to state (hover, elevation, focus).", "section": "elevation" }
+    ],
+    "dos": [
+      "Do use vast amounts of white space to let the architectural photography speak.",
+      "Do use the Construction Orange (#F59E3F) extremely sparingly as a highly targeted accent.",
+      "Do maintain strict alignment and geometric layouts to reinforce the 'Master Builder' aesthetic.",
+      "Do use fully rounded pill shapes for primary interactive buttons to make them tactile and approachable."
+    ],
+    "donts": [
+      "Don't use generic, template-driven SaaS aesthetics (like glowing gradients or glassmorphism).",
+      "Don't use identical, endlessly repeating card grids. Vary the layout to keep it editorial.",
+      "Don't use border-left greater than 1px as a colored stripe on cards or callouts.",
+      "Don't clutter the interface; every element must earn its place."
+    ]
+  }
+}

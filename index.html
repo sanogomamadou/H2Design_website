@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>H2 Design | Architecture & Construction au Mali</title>
+  <meta name="description"
+    content="H2 Design, cabinet d'architecture et de construction au Mali. Construction résidentielle, rénovation et décoration intérieure. Accompagnement complet de votre projet." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="/assets/h2_hero_villa_1778682722885.png">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+
+<body>
+  <div id="app">
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-bg" id="hero-carousel">
+        <img src="/assets/h2_hero_villa_1778682722885.png" class="carousel-img active"
+          alt="Villa moderne réalisée par H2 Design à Bamako" />
+        <img src="/assets/h2_interior_wood_1778682764614.png" class="carousel-img" alt="Aménagement intérieur" />
+        <img src="/assets/h2_project_construction_1778682750140.png" class="carousel-img" alt="Chantier en cours" />
+        <div class="hero-overlay"></div>
+      </div>
+
+      <header class="navbar">
+        <div class="nav-left">
+          <div class="logo">H2 Design</div>
+          <div class="breadcrumb" aria-hidden="true">
+            <span class="sep">/</span>
+            <span id="bc-current">Accueil</span>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+
+        <nav class="nav-links">
+          <a href="#" class="active">Accueil</a>
+          <a href="#about">À propos</a>
+          <a href="#services">Services</a>
+          <a href="#projects">Réalisations</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <a href="#contact-form" class="btn-dark pill">Contactez-nous <span
+            class="material-symbols-outlined">north_east</span></a>
+      </header>
+      <div class="nav-overlay" id="nav-overlay"></div>
+
+      <div class="hero-content">
+        <h1 class="hero-title">
+          Architecture & Construction <br>au Service de Votre Vision.
+        </h1>
+
+        <div class="hero-bottom">
+          <div class="hero-text-wrap">
+            <p class="hero-text">
+              Bâtir, rénover et sublimer : notre mission de l’esquisse à l’excellence.
+            </p>
+            <div class="hero-controls" id="hero-controls">
+              <div class="carousel-indicators">
+                <span class="line-indicator active" data-index="0"></span>
+                <span class="line-indicator" data-index="1"></span>
+                <span class="line-indicator" data-index="2"></span>
+              </div>
+              <div class="carousel-nav">
+                <button class="carousel-btn prev-btn" aria-label="Image précédente"><span
+                    class="material-symbols-outlined" aria-hidden="true">chevron_left</span></button>
+                <button class="carousel-btn next-btn" aria-label="Image suivante"><span
+                    class="material-symbols-outlined" aria-hidden="true">chevron_right</span></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-cards">
+            <a href="#projects" class="h-card" aria-label="Voir le projet Villa ACI 2000">
+              <img src="/assets/h2_project_construction_1778682750140.png" alt="Villa ACI 2000" />
+              <div class="h-card-content">
+                <div>
+                  <p class="h-card-title">Villa ACI 2000</p>
+                  <p>Bamako, Mali</p>
+                </div>
+                <span class="material-symbols-outlined" aria-hidden="true">north_east</span>
+              </div>
+            </a>
+            <a href="#projects" class="h-card h-card-secondary" aria-label="Voir le projet Résidence Sotuba">
+              <img src="/assets/h2_interior_wood_1778682764614.png" alt="Résidence Sotuba" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="about-section layout-container section-pad">
+      <div class="about-refound">
+        <div class="ar-top reveal">
+          <p class="section-label">À propos</p>
+          <h2 class="ar-headline">
+            Nous sommes un cabinet d'architecture et de construction dédié aux <strong>projets résidentiels</strong>.
+          </h2>
+        </div>
+
+        <div class="ar-middle reveal delay-1">
+          <div class="ar-image-wrapper">
+            <img src="/assets/h2_interior_wood_1778682764614.png" alt="Intérieur bois et béton" loading="lazy" />
+          </div>
+          <div class="ar-metrics">
+            <div class="ar-metric">
+              <span class="num">15+</span>
+              <span class="lbl">Ans d'expérience</span>
+            </div>
+            <div class="ar-metric">
+              <span class="num">120+</span>
+              <span class="lbl">Projets livrés</span>
+            </div>
+            <div class="ar-metric">
+              <span class="num">100%</span>
+              <span class="lbl">Suivi à distance</span>
+            </div>
+            <div class="ar-metric">
+              <span class="num">10 ans</span>
+              <span class="lbl">Garantie structurelle</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ar-bottom reveal delay-2">
+          <div class="ar-text">
+            <p>Que vous soyez sur place au Mali ou à l'étranger, concrétiser un projet immobilier exige un partenaire
+              d'une fiabilité absolue. Notre agence associe rigueur technique, respect strict des engagements et
+              transparence totale à chaque étape du chantier.</p>
+          </div>
+          <div class="ar-action">
+            <a href="#services" class="btn-dark pill">Notre approche <span
+                class="material-symbols-outlined">arrow_forward</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section layout-container section-pad bg-light">
+      <div class="services-header reveal">
+        <div class="s-head-left">
+          <p class="section-label">Nos Services</p>
+          <h2 class="section-title">Des Solutions Complètes pour Construire et Rénover.</h2>
+        </div>
+        <div class="s-head-right">
+          <p>Un interlocuteur unique pour orchestrer l'intégralité de vos travaux. Nous alignons vision architecturale,
+            solidité structurelle et finitions sur mesure pour vous garantir une tranquillité d'esprit absolue.</p>
+          <a href="#" class="btn-dark">Tous nos services</a>
+        </div>
+      </div>
+
+      <div class="services-list">
+        <!-- Service 1 -->
+        <div class="service-row reveal" id="service-01">
+          <div class="s-text">
+            <p class="s-number">Service 01</p>
+            <h3 class="s-title">Architecture, Plan et ingénierie</h3>
+            <p class="s-desc">Nous transformons vos idées en plans concrets et réalisables. Notre bureau d'études assure
+              la conception complète de votre projet avec une ingénierie précise, pour garantir la faisabilité et la
+              pérennité de votre investissement.</p>
+            <div class="s-meta">
+              <div class="s-meta-item">
+                <span class="s-meta-label">Suivi à distance</span>
+                <span class="s-meta-value">Rapports 3D & Visio bi-mensuelle</span>
+              </div>
+              <div class="s-meta-item">
+                <span class="s-meta-label">Livrables clés</span>
+                <span class="s-meta-value">Plans d'exécution BIM, DQE détaillé</span>
+              </div>
+            </div>
+            <div class="s-carousel-controls" data-carousel="service-01">
+              <div class="s-nav-btns">
+                <button class="btn-circle-outline s-prev" aria-label="Images précédentes"><span
+                    class="material-symbols-outlined">arrow_back</span></button>
+                <button class="btn-circle-outline s-next" aria-label="Images suivantes"><span
+                    class="material-symbols-outlined">arrow_forward</span></button>
+              </div>
+              <span class="s-pagination"><span class="s-current">01</span> <span class="s-slash">/</span> <span
+                  class="s-total">03</span></span>
+            </div>
+          </div>
+          <div class="s-images-wrapper">
+            <div class="s-images-track" id="track-service-01">
+              <div class="s-slide">
+                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80"
+                  alt="Plans d'architecture et blueprints" loading="lazy" />
+              </div>
+              <div class="s-slide">
+                <img src="/assets/h2_hero_villa_1778682722885.png" alt="Rendu 3D réaliste de villa moderne"
+                  loading="lazy" />
+              </div>
+              <div class="s-slide">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+                  alt="Intégration du projet dans son environnement" loading="lazy" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="service-row service-row-reverse reveal" id="service-02">
+          <div class="s-images-wrapper">
+            <div class="s-images-track" id="track-service-02">
+              <div class="s-slide">
+                <img src="/assets/h2_project_construction_1778682750140.png"
+                  alt="Chantier de construction H2 Design en cours" loading="lazy" />
+              </div>
+              <div class="s-slide">
+                <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80"
+                  alt="Mise en place de la structure béton armé" loading="lazy" />
+              </div>
+              <div class="s-slide">
+                <img src="https://images.unsplash.com/photo-1541888086425-d81bb19240f5?auto=format&fit=crop&w=800&q=80"
+                  alt="Travaux de gros œuvre et maçonnerie" loading="lazy" />
+              </div>
+            </div>
+          </div>
+          <div class="s-text">
+            <p class="s-number">Service 02</p>
+            <h3 class="s-title">Construction et Gros œuvre</h3>
+            <p class="s-desc">La base d'un bâtiment durable. Nous réalisons l'ensemble des travaux de structure, des
+              fondations jusqu'à la mise hors d'eau et hors d'air, en respectant les normes de construction les plus
+              strictes au Mali.</p>
+            <div class="s-meta">
+              <div class="s-meta-item">
+                <span class="s-meta-label">Suivi à distance</span>
+                <span class="s-meta-value">Inspection par drone & imagerie satellite hebdo</span>
+              </div>
+              <div class="s-meta-item">
+                <span class="s-meta-label">Garantie</span>
+                <span class="s-meta-value">Garantie décennale structurelle (10 ans)</span>
+              </div>
+            </div>
+            <div class="s-carousel-controls" data-carousel="service-02">
+              <div class="s-nav-btns">
+                <button class="btn-circle-outline s-prev" aria-label="Images précédentes"><span
+                    class="material-symbols-outlined">arrow_back</span></button>
+                <button class="btn-circle-outline s-next" aria-label="Images suivantes"><span
+                    class="material-symbols-outlined">arrow_forward</span></button>
+              </div>
+              <span class="s-pagination"><span class="s-current">01</span> <span class="s-slash">/</span> <span
+                  class="s-total">03</span></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="service-row reveal" id="service-03">
+          <div class="s-text">
+            <p class="s-number">Service 03</p>
+            <h3 class="s-title">Rénovation et Finition</h3>
+            <p class="s-desc">L'art de moderniser et parfaire. Que ce soit pour une remise à neuf complète ou des
+              finitions de haute précision (plomberie, électricité, menuiserie, étanchéité), nous sublimons l'existant.
+            </p>
+            <div class="s-meta">
+              <div class="s-meta-item">
+                <span class="s-meta-label">Suivi à distance</span>
+                <span class="s-meta-value">Rapports photo détaillés par lot & Visio de validation</span>
+              </div>
+              <div class="s-meta-item">
+                <span class="s-meta-label">Livrables clés</span>
+                <span class="s-meta-value">Matériaux certifiés, PV de réception technique</span>
+              </div>
+            </div>
+            <div class="s-carousel-controls" data-carousel="service-03">
+              <div class="s-nav-btns">
+                <button class="btn-circle-outline s-prev" aria-label="Images précédentes"><span
+                    class="material-symbols-outlined">arrow_back</span></button>
+                <button class="btn-circle-outline s-next" aria-label="Images suivantes"><span
+                    class="material-symbols-outlined">arrow_forward</span></button>
+              </div>
+              <span class="s-pagination"><span class="s-current">01</span> <span class="s-slash">/</span> <span
+                  class="s-total">03</span></span>
+            </div>
+          </div>
+          <div class="s-images-wrapper">
+            <div class="s-images-track" id="track-service-03">
+              <div class="s-slide">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+                  alt="Maison rénovée avec finitions premium" loading="lazy" />
+              </div>
+              <div class="s-slide">
+                <img src="/assets/h2_interior_wood_1778682764614.png"
+                  alt="Finitions intérieures bois et faux plafonds BA13" loading="lazy" />
+              </div>
+              <div class="s-slide">
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80"
+                  alt="Détail de l'éclairage et des revêtements" loading="lazy" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="service-row service-row-full reveal" id="service-04">
+          <div class="s-text s-text-center">
+            <p class="s-number">Service 04</p>
+            <div class="s-title-group">
+              <h3 class="s-title">Décoration et design intérieur</h3>
+              <p class="s-desc">L'âme de votre résidence. De l'aménagement sur mesure aux espaces verts, en passant par
+                la décoration d'intérieur, nous créons des espaces de vie esthétiques, fonctionnels et à votre image.
+              </p>
+            </div>
+            <div class="s-meta s-meta-center">
+              <div class="s-meta-item">
+                <span class="s-meta-label">Suivi à distance</span>
+                <span class="s-meta-value">Planches tendances (Moodboards 3D) & Visio shopping</span>
+              </div>
+              <div class="s-meta-item">
+                <span class="s-meta-label">Livrables clés</span>
+                <span class="s-meta-value">Mobilier sur mesure, Aménagement paysager</span>
+              </div>
+            </div>
+            <a href="#expertises" class="btn-dark pill" style="margin-top: 16px;">Voir nos expertises <span
+                class="material-symbols-outlined">north_east</span></a>
+          </div>
+          <div class="s-image-full">
+            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80"
+              alt="Décoration intérieure moderne et aménagement sur mesure" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Expertises Section -->
+    <section id="expertises" class="expertises-section layout-container section-pad">
+      <div class="expertises-header reveal">
+        <p class="section-label">Nos Expertises</p>
+        <h2 class="section-title">Un Savoir-Faire Complet.</h2>
+        <p class="expertises-intro">Nous maîtrisons l'ensemble des corps de métier pour vous livrer un projet clés en
+          main, sans faille ni compromis sur la qualité.</p>
+      </div>
+
+      <div class="expertises-grid">
+        <!-- Pillar 1 -->
+        <div class="exp-group reveal delay-1">
+          <h3>Architecture & Ingénierie</h3>
+          <ul class="exp-list">
+            <li>Étude de faisabilité et budgétisation</li>
+            <li>Conception architecturale et modélisation 3D</li>
+            <li>Ingénierie structurelle et technique</li>
+            <li>Gestion des permis et démarches administratives</li>
+            <li>Maîtrise d'œuvre et suivi de chantier</li>
+          </ul>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="exp-group reveal delay-2">
+          <h3>Construction & Gros œuvre</h3>
+          <ul class="exp-list">
+            <li>Terrassement, fondations et soubassements</li>
+            <li>Maçonnerie générale et élévation de structures</li>
+            <li>Réalisation de forages et adduction d'eau</li>
+            <li>Charpente, toiture et couverture</li>
+            <li>Assainissement et raccordements aux réseaux</li>
+          </ul>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="exp-group reveal delay-3">
+          <h3>Rénovation & Finition</h3>
+          <ul class="exp-list">
+            <li>Plomberie, électricité et installation de sanitaires</li>
+            <li>Plâtrerie, cloisons et faux plafonds (Staff, BA13, 60x60)</li>
+            <li>Menuiserie aluminium, métallique, PVC et Alucobond</li>
+            <li>Revêtements de sols et murs (carrelage, marbre)</li>
+            <li>Étanchéité, enduits (graffiato) et peintures décoratives</li>
+          </ul>
+        </div>
+
+        <!-- Pillar 4 -->
+        <div class="exp-group reveal delay-4">
+          <h3>Décoration & Design intérieur</h3>
+          <ul class="exp-list">
+            <li>Architecture d'intérieur et optimisation d'espace</li>
+            <li>Menuiserie bois (dressing, cuisine, mobilier sur mesure)</li>
+            <li>Conception et aménagement d'espaces verts</li>
+            <li>Création d'enseignes et lettrages sur mesure</li>
+            <li>Conseil en choix de matériaux, couleurs et éclairages</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section layout-container section-pad">
+      <div class="projects-header reveal">
+        <h2 class="section-title">Des Réalisations Définies par<br>la Qualité et le Soin.</h2>
+        <div class="filters">
+          <p class="section-label">Nos Réalisations</p>
+          <div class="filter-pills">
+            <button class="pill active" data-filter="all" aria-pressed="true">Tout</button>
+            <button class="pill" data-filter="construction" aria-pressed="false">Construction</button>
+            <button class="pill" data-filter="renovation" aria-pressed="false">Rénovation</button>
+            <button class="pill" data-filter="interior" aria-pressed="false">Intérieur</button>
+            <button class="pill" data-filter="extension" aria-pressed="false">Extension</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Project 1 (Villa Contemporaine ACI 2000) -->
+        <div class="project-card reveal row-featured" data-id="villa-aci" data-category="construction" role="button" tabindex="0" aria-label="Consulter les détails du projet Villa Contemporaine ACI 2000" aria-expanded="false">
+          <div class="p-img">
+            <img src="/assets/h2_hero_villa_1778682722885.png" alt="Villa Moderne ACI 2000" loading="lazy" />
+            <div class="p-overlay">
+              <span class="p-badge status-badge badge-success">Livré • Clés en main</span>
+              <button class="btn-circle overlay-btn" aria-label="Consulter les détails du projet"><span
+                  class="material-symbols-outlined">arrow_forward</span></button>
+            </div>
+          </div>
+          <div class="p-meta-grid">
+            <div class="p-main-info">
+              <h3>Villa Contemporaine ACI 2000</h3>
+              <div class="p-details">
+                <span><span class="material-symbols-outlined">location_on</span> Bamako, Mali</span>
+                <span><span class="material-symbols-outlined">calendar_today</span> 2024</span>
+              </div>
+            </div>
+            <div class="p-specs">
+              <table class="p-specs-table">
+                <tr>
+                  <td>Superficie</td>
+                  <td><strong>450 m²</strong></td>
+                </tr>
+                <tr>
+                  <td>Lots réalisés</td>
+                  <td><strong>BIM, Gros œuvre, Finitions</strong></td>
+                </tr>
+                <tr>
+                  <td>Typologie</td>
+                  <td><strong>Villa R+1</strong></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 (Résidence Familiale Sotuba) -->
+        <div class="project-card reveal delay-1 row-left" data-id="residence-sotuba" data-category="construction" role="button" tabindex="0" aria-label="Consulter les détails du projet Résidence Familiale Sotuba" aria-expanded="false">
+          <div class="p-img">
+            <img src="/assets/h2_project_construction_1778682750140.png" alt="Résidence Familiale Sotuba"
+              loading="lazy" />
+            <div class="p-overlay">
+              <span class="p-badge status-badge badge-warning">Finitions en cours</span>
+              <button class="btn-circle overlay-btn" aria-label="Consulter les détails du projet"><span
+                  class="material-symbols-outlined">arrow_forward</span></button>
+            </div>
+          </div>
+          <div class="p-meta-grid">
+            <div class="p-main-info">
+              <h3>Résidence Familiale Sotuba</h3>
+              <div class="p-details">
+                <span><span class="material-symbols-outlined">location_on</span> Bamako, Mali</span>
+                <span><span class="material-symbols-outlined">calendar_today</span> 2025</span>
+              </div>
+            </div>
+            <div class="p-specs">
+              <table class="p-specs-table">
+                <tr>
+                  <td>Superficie</td>
+                  <td><strong>580 m²</strong></td>
+                </tr>
+                <tr>
+                  <td>Lots réalisés</td>
+                  <td><strong>Terrassement, Gros œuvre</strong></td>
+                </tr>
+                <tr>
+                  <td>Typologie</td>
+                  <td><strong>Résidence R+2</strong></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 (Rénovation Badalabougou) -->
+        <div class="project-card reveal delay-2 row-right" data-id="renovation-badala" data-category="renovation" role="button" tabindex="0" aria-label="Consulter les détails du projet Rénovation Badalabougou" aria-expanded="false">
+          <div class="p-img">
+            <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80"
+              alt="Rénovation Badalabougou" loading="lazy" />
+            <div class="p-overlay">
+              <span class="p-badge status-badge badge-success">Livré • Rénovation</span>
+              <button class="btn-circle overlay-btn" aria-label="Consulter les détails du projet"><span
+                  class="material-symbols-outlined">arrow_forward</span></button>
+            </div>
+          </div>
+          <div class="p-meta-grid">
+            <div class="p-main-info">
+              <h3>Rénovation Badalabougou</h3>
+              <div class="p-details">
+                <span><span class="material-symbols-outlined">location_on</span> Bamako, Mali</span>
+                <span><span class="material-symbols-outlined">calendar_today</span> 2023</span>
+              </div>
+            </div>
+            <div class="p-specs">
+              <table class="p-specs-table">
+                <tr>
+                  <td>Superficie</td>
+                  <td><strong>320 m²</strong></td>
+                </tr>
+                <tr>
+                  <td>Lots réalisés</td>
+                  <td><strong>Plomberie, Peinture, Graffiato</strong></td>
+                </tr>
+                <tr>
+                  <td>Typologie</td>
+                  <td><strong>Villa Basse</strong></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4 (Extension & Rénovation Hippodrome) -->
+        <div class="project-card reveal delay-3 row-featured" data-id="extension-hippo"
+          data-category="extension interior" role="button" tabindex="0" aria-label="Consulter les détails du projet Extension et Rénovation" aria-expanded="false">
+          <div class="p-img">
+            <img src="/assets/h2_interior_wood_1778682764614.png" alt="Extension Villa Hippodrome" loading="lazy" />
+            <div class="p-overlay">
+              <span class="p-badge status-badge badge-success">Livré • Clés en main</span>
+              <button class="btn-circle overlay-btn" aria-label="Consulter les détails du projet"><span
+                  class="material-symbols-outlined">arrow_forward</span></button>
+            </div>
+          </div>
+          <div class="p-meta-grid">
+            <div class="p-main-info">
+              <h3>Extension & Rénovation</h3>
+              <div class="p-details">
+                <span><span class="material-symbols-outlined">location_on</span> Bamako, Mali</span>
+                <span><span class="material-symbols-outlined">calendar_today</span> 2024</span>
+              </div>
+            </div>
+            <div class="p-specs">
+              <table class="p-specs-table">
+                <tr>
+                  <td>Superficie</td>
+                  <td><strong>180 m²</strong></td>
+                </tr>
+                <tr>
+                  <td>Lots réalisés</td>
+                  <td><strong>Menuiserie bois, Mobilier</strong></td>
+                </tr>
+                <tr>
+                  <td>Typologie</td>
+                  <td><strong>Pavillon Bois</strong></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Case Study Dynamic Drawer -->
+    <div id="project-drawer" class="project-drawer" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
+      <div class="drawer-overlay" id="drawer-overlay"></div>
+      <div class="drawer-content">
+        <button class="drawer-close-btn" id="drawer-close" aria-label="Fermer le tiroir d'informations">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+        <div class="drawer-body">
+          <div class="drawer-header-visual">
+            <img id="drawer-img" src="" alt="" />
+            <div class="drawer-img-overlay"></div>
+            <div class="drawer-title-block">
+              <span id="drawer-category-badge" class="p-badge"></span>
+              <h2 id="drawer-title"></h2>
+              <p id="drawer-location" class="d-location"></p>
+            </div>
+          </div>
+
+          <div class="drawer-details-grid">
+            <!-- Left Column: Construction Milestones -->
+            <div class="drawer-main-info">
+              <h3 class="drawer-sec-title">Journal de Suivi à Distance</h3>
+              <p class="drawer-sec-desc">Chaque étape clé a été validée à distance par le propriétaire grâce à nos
+                outils transparents de suivi en temps réel.</p>
+
+              <div class="drawer-timeline" id="drawer-timeline">
+                <!-- Timeline milestones injected dynamically -->
+              </div>
+            </div>
+
+            <!-- Right Column: Specs & Client Testimonial -->
+            <div class="drawer-side-info">
+              <div class="drawer-side-block">
+                <h3 class="drawer-sec-title">Fiche Technique</h3>
+                <div id="drawer-specs-container">
+                  <!-- Specifications table injected dynamically -->
+                </div>
+              </div>
+
+              <div class="drawer-side-block drawer-testimonial-block" id="drawer-testimonial-container"
+                style="display: none;">
+                <h3 class="drawer-sec-title">Témoignage du Propriétaire</h3>
+                <blockquote class="drawer-quote">
+                  <p id="drawer-quote-text"></p>
+                  <cite id="drawer-quote-author"></cite>
+                </blockquote>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section section-pad bg-light">
+      <div class="layout-container">
+        <div class="testimonials-header reveal">
+          <div class="t-head-left">
+            <p class="section-label">Témoignages</p>
+            <h2 class="section-title">La Confiance Établie à Distance.</h2>
+          </div>
+          <div class="t-head-right">
+            <p class="t-head-desc">
+              Découvrez les retours d'expérience de nos clients, qu'ils soient résidents au Mali ou établis à
+              l'étranger. Chaque réalisation est le fruit d'une transparence totale et d'un engagement sans compromis.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Full-bleed Marquee Container -->
+      <div class="t-marquee-container reveal">
+        <div class="t-marquee-track">
+          <!-- Copy 1 -->
+          <div class="t-card" tabindex="0">
+            <div class="t-card-header">
+              <span class="stars" aria-label="5 étoiles">★★★★★</span>
+              <span class="t-card-rating">5.0</span>
+            </div>
+            <blockquote class="t-card-quote">
+              "L'équipe de H2 Design a géré notre projet de construction depuis la France avec transparence. Chaque
+              étape documentée, chaque décision partagée. Un résultat irréprochable."
+            </blockquote>
+            <div class="t-card-author">
+              <strong>Amadou D.</strong>
+              <p>Propriétaire Villa ACI 2000 • Paris</p>
+            </div>
+          </div>
+
+          <div class="t-card" tabindex="0">
+            <div class="t-card-header">
+              <span class="stars" aria-label="5 étoiles">★★★★★</span>
+              <span class="t-card-rating">4.9</span>
+            </div>
+            <blockquote class="t-card-quote">
+              "Depuis Bordeaux, faire construire la maison de mes parents à Bamako semblait impossible. Visites
+              virtuelles, rapports par drone, budget respecté. Confiance absolue."
+            </blockquote>
+            <div class="t-card-author">
+              <strong>Fatoumata K.</strong>
+              <p>Propriétaire Sotuba • Bordeaux</p>
+            </div>
+          </div>
+
+          <div class="t-card" tabindex="0">
+            <div class="t-card-header">
+              <span class="stars" aria-label="5 étoiles">★★★★★</span>
+              <span class="t-card-rating">5.0</span>
+            </div>
+            <blockquote class="t-card-quote">
+              "La rénovation de notre villa s'est déroulée dans les délais et le budget convenus. Le niveau de finition
+              est exceptionnel. Un partenaire de confiance pour l'avenir."
+            </blockquote>
+            <div class="t-card-author">
+              <strong>Ibrahim T.</strong>
+              <p>Propriétaire Rénovation • Bamako</p>
+            </div>
+          </div>
+
+          <div class="t-card" tabindex="0">
+            <div class="t-card-header">
+              <span class="stars" aria-label="5 étoiles">★★★★★</span>
+              <span class="t-card-rating">4.9</span>
+            </div>
+            <blockquote class="t-card-quote">
+              "Un travail d'ingénierie et de gros œuvre remarquable. Habitant à Lyon, j'ai pu valider chaque phase du
+              béton armé grâce aux vidéos hebdomadaires."
+            </blockquote>
+            <div class="t-card-author">
+              <strong>Moussa S.</strong>
+              <p>Propriétaire Résidence R+2 • Lyon</p>
+            </div>
+          </div>
+
+          <div class="t-card" tabindex="0">
+            <div class="t-card-header">
+              <span class="stars" aria-label="5 étoiles">★★★★★</span>
+              <span class="t-card-rating">5.0</span>
+            </div>
+            <blockquote class="t-card-quote">
+              "Bien qu'étant loin en Allemagne, j'ai pu choisir les matériaux en visio et suivre le chantier pas à pas.
+              Le soin apporté aux détails est exceptionnel."
+            </blockquote>
+            <div class="t-card-author">
+              <strong>Aminata D.</strong>
+              <p>Propriétaire Badalabougou • Munich</p>
+            </div>
+          </div>
+
+          <!-- Copy 2 (Duplicated for infinite looping) -->
+          <div class="t-card" aria-hidden="true" tabindex="-1">
+            <div class="t-card-header">
+              <span class="stars">★★★★★</span>
+              <span class="t-card-rating">5.0</span>
+            </div>
+            <blockquote class="t-card-quote">
+              "L'équipe de H2 Design a géré notre projet de construction depuis la France avec transparence. Chaque
+              étape documentée, chaque décision partagée. Un résultat irréprochable."
+            </blockquote>
+            <div class="t-card-author">
+              <strong>Amadou D.</strong>
+              <p>Propriétaire Villa ACI 2000 • Paris</p>
+            </div>
+          </div>
+
+          <div class="t-card" aria-hidden="true" tabindex="-1">
+            <div class="t-card-header">
+              <span class="stars">★★★★★</span>
+              <span class="t-card-rating">4.9</span>
+            </div>
+            <blockquote class="t-card-quote">
+              "Depuis Bordeaux, faire construire la maison de mes parents à Bamako semblait impossible. Visites
+              virtuelles, rapports par drone, budget respecté. Confiance absolue."
+            </blockquote>
+            <div class="t-card-author">
+              <strong>Fatoumata K.</strong>
+              <p>Propriétaire Sotuba • Bordeaux</p>
+            </div>
+          </div>
+
+          <div class="t-card" aria-hidden="true" tabindex="-1">
+            <div class="t-card-header">
+              <span class="stars">★★★★★</span>
+              <span class="t-card-rating">5.0</span>
+            </div>
+            <blockquote class="t-card-quote">
+              "La rénovation de notre villa s'est déroulée dans les délais et le budget convenus. Le niveau de finition
+              est exceptionnel. Un partenaire de confiance pour l'avenir."
+            </blockquote>
+            <div class="t-card-author">
+              <strong>Ibrahim T.</strong>
+              <p>Propriétaire Rénovation • Bamako</p>
+            </div>
+          </div>
+
+          <div class="t-card" aria-hidden="true" tabindex="-1">
+            <div class="t-card-header">
+              <span class="stars">★★★★★</span>
+              <span class="t-card-rating">4.9</span>
+            </div>
+            <blockquote class="t-card-quote">
+              "Un travail d'ingénierie et de gros œuvre remarquable. Habitant à Lyon, j'ai pu valider chaque phase du
+              béton armé grâce aux vidéos hebdomadaires."
+            </blockquote>
+            <div class="t-card-author">
+              <strong>Moussa S.</strong>
+              <p>Propriétaire Résidence R+2 • Lyon</p>
+            </div>
+          </div>
+
+          <div class="t-card" aria-hidden="true" tabindex="-1">
+            <div class="t-card-header">
+              <span class="stars">★★★★★</span>
+              <span class="t-card-rating">5.0</span>
+            </div>
+            <blockquote class="t-card-quote">
+              "Bien qu'étant loin en Allemagne, j'ai pu choisir les matériaux en visio et suivre le chantier pas à pas.
+              Le soin apporté aux détails est exceptionnel."
+            </blockquote>
+            <div class="t-card-author">
+              <strong>Aminata D.</strong>
+              <p>Propriétaire Badalabougou • Munich</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA / Contact Section -->
+    <section id="contact" class="cta-section">
+      <div class="cta-content layout-container">
+        <div class="cta-header">
+          <p class="section-label">Contact</p>
+          <h2 class="cta-title">Discutons de Votre Projet.</h2>
+          <p class="cta-desc">Chaque réalisation commence par une écoute attentive. Partagez-nous vos idées et
+            contraintes, et nous vous répondons sous 24h.</p>
+
+          <!-- Live SLA response banner for distant trust -->
+          <div class="sla-banner" aria-live="polite">
+            <span class="sla-indicator">
+              <span class="sla-dot"></span>
+              <span class="sla-pulse"></span>
+            </span>
+            <span class="sla-text"><strong id="bamako-time-display">Bamako 10:05 GMT</strong> • Temps de réponse : &lt;
+              12h • Disponible pour vos projets</span>
+          </div>
+
+          <div class="cta-actions">
+            <a href="#contact-form" class="btn-dark pill">Écrire un message <span
+                class="material-symbols-outlined">edit</span></a>
+            <a href="https://wa.me/22374149914" class="btn-whatsapp" target="_blank" rel="noopener noreferrer"
+              aria-label="Nous contacter sur WhatsApp">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
+              </svg>
+              WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <form id="contact-form" class="contact-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cf-name">Nom complet</label>
+              <input type="text" id="cf-name" name="name" placeholder="Votre nom" autocomplete="name" required />
+            </div>
+            <div class="form-group">
+              <label for="cf-whatsapp">WhatsApp / Téléphone</label>
+              <input type="tel" id="cf-whatsapp" name="whatsapp" placeholder="+223 ou +33…" autocomplete="tel"
+                required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="cf-type">Type de projet</label>
+            <div class="select-wrapper">
+              <select id="cf-type" name="project_type" required>
+                <option value="" disabled selected>Choisissez une catégorie</option>
+                <option value="architecture">Architecture, Plan et ingénierie</option>
+                <option value="construction">Construction et Gros œuvre</option>
+                <option value="renovation">Rénovation et Finition</option>
+                <option value="decoration">Décoration et design intérieur</option>
+                <option value="autre">Autre projet / Projet complet</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Timezone & WhatsApp Video Call Scheduling (Diaspora Feature) -->
+          <div class="form-group cf-scheduler-checkbox-group">
+            <label class="checkbox-container">
+              <input type="checkbox" id="cf-schedule-call" name="schedule_call" />
+              <span class="checkbox-checkmark"></span>
+              <span class="checkbox-label">Planifier un appel de cadrage sur WhatsApp</span>
+            </label>
+          </div>
+
+          <div class="cf-scheduler-fields" id="cf-scheduler-fields">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="cf-timezone">Votre Fuseau Horaire</label>
+                <div class="select-wrapper">
+                  <select id="cf-timezone" name="timezone">
+                    <option value="Europe/Paris" selected>Paris / France (GMT+2)</option>
+                    <option value="Africa/Bamako">Bamako / Mali (GMT+0)</option>
+                    <option value="Europe/London">Londres / UK (GMT+1)</option>
+                    <option value="Europe/Brussels">Bruxelles / Belgique (GMT+2)</option>
+                    <option value="America/Montreal">Montréal / Canada (GMT-4)</option>
+                    <option value="Europe/Berlin">Munich / Allemagne (GMT+2)</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="cf-slot">Créneau Souhaité</label>
+                <div class="select-wrapper">
+                  <select id="cf-slot" name="slot">
+                    <option value="" disabled selected>Choisissez un créneau</option>
+                    <option value="Matin (09:00 - 12:00)">Matin (09:00 - 12:00 GMT)</option>
+                    <option value="Après-midi (14:00 - 17:00)">Après-midi (14:00 - 17:00 GMT)</option>
+                    <option value="Soirée (18:00 - 20:00)">Soirée (18:00 - 20:00 GMT)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="cf-message">Votre message</label>
+            <textarea id="cf-message" name="message" rows="4"
+              placeholder="Décrivez votre projet, localisation, budget estimé…" required></textarea>
+          </div>
+
+          <div class="form-submit">
+            <button type="submit" class="btn-dark pill" id="cf-submit">Envoyer la demande <span
+                class="material-symbols-outlined">north_east</span></button>
+            <p class="form-privacy">Vos données sont confidentielles et utilisées uniquement pour traiter votre demande.
+            </p>
+          </div>
+
+          <div class="form-error" id="form-error" role="alert" aria-live="polite" hidden>
+            <span class="material-symbols-outlined">error</span>
+            <p>Veuillez remplir correctement tous les champs requis.</p>
+          </div>
+
+          <div class="form-success" id="form-success" role="alert" aria-live="polite" hidden>
+            <span class="material-symbols-outlined">check_circle</span>
+            <p>Message envoyé. Nous vous répondons sous 24h.</p>
+          </div>
+        </form>
+      </div>
+
+      <!-- Live Field Command & Monograph Deck -->
+      <div class="live-field-deck">
+        <!-- Left: Engagement Monograph Card -->
+        <div class="field-monograph-card">
+          <div class="field-image">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80"
+              alt="Villa moderne H2 Design Bamako" loading="lazy" />
+            <div class="field-badge">
+              <span class="pulse-dot" style="animation: none; background-color: #E8A33D;"></span>
+              <span class="badge-text">GARANTIE H2 DESIGN • 100% TRANSPARENCE</span>
+            </div>
+            <div class="field-telemetry">
+              <div class="telemetry-row">
+                <span class="tel-label">ÉTAPE 01 : CADRAGE</span>
+                <span class="tel-value">Appel WhatsApp visio & devis estimatif sous 24h</span>
+              </div>
+              <div class="telemetry-row">
+                <span class="tel-label">ÉTAPE 02 : CONCEPTION</span>
+                <span class="tel-value">Maquette BIM 3D & validation du DQE budgétisé</span>
+              </div>
+              <div class="telemetry-row">
+                <span class="tel-label">ÉTAPE 03 : CHANTIER</span>
+                <span class="tel-value">Rapports photos/vidéos hebdomadaires par lot</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Distant Trust Hub Card -->
+        <div class="distant-trust-card">
+          <p class="dt-kicker">ACCOMPAGNEMENT SUR MESURE</p>
+          <h3 class="dt-title">Vous avez des questions avant de lancer votre projet ?</h3>
+          <p class="dt-desc">Notre équipe d'architectes et d'ingénieurs est à votre disposition pour vous expliquer nos
+            garanties décennales, nos modes de paiement sécurisés par étapes et notre gestion à distance.</p>
+          <div class="dt-actions">
+            <a href="https://wa.me/22374149914" class="btn-dark pill dt-btn-primary" target="_blank"
+              rel="noopener noreferrer" style="text-decoration: none;">
+              <span class="material-symbols-outlined">call</span> Échange WhatsApp Direct
+            </a>
+            <a href="#projects" class="btn-outline-pill dt-btn-secondary">
+              <span class="material-symbols-outlined">grid_view</span> Voir les projets livrés
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="layout-container site-footer__container">
+        <!-- New 4-Column Layout Grid -->
+        <div class="footer-grid">
+          <!-- Col 1: L'Agence -->
+          <div class="footer-col brand-col">
+            <a href="/" class="f-logo">H2 Design</a>
+            <p class="f-brand-sub">ARCHITECTURE & CONSTRUCTION DE PRÉCISION</p>
+            <p class="f-brand-desc">Conception BIM de haute technicité et réalisation de villas d'exception au Mali,
+              pensées pour les exigences de la diaspora.</p>
+            <div class="f-socials">
+              <a href="#" class="social-icon" aria-label="Suivre sur Instagram">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+              </a>
+              <a href="#" class="social-icon" aria-label="Suivre sur LinkedIn">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+              </a>
+              <a href="https://wa.me/22374149914" class="social-icon" target="_blank" rel="noopener noreferrer"
+                aria-label="Nous contacter sur WhatsApp">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Col 2: Bureau Bamako -->
+          <div class="footer-col office-col">
+            <h3 class="f-col-title">BUREAU BAMAKO</h3>
+            <div class="office-card">
+              <span class="material-symbols-outlined office-icon">location_on</span>
+              <div class="office-text">
+                <p class="office-addr">BACODJICORONI GOLF</p>
+                <p class="office-city">Bamako, Mali</p>
+              </div>
+            </div>
+            <div class="office-time">
+              <span class="material-symbols-outlined time-icon">schedule</span>
+              <div class="time-text">
+                <span class="bamako-time" id="footer-bamako-time">Bamako 18:40 GMT</span>
+                <span class="work-days">Lun - Ven : 08:00 - 18:00</span>
+                <span class="work-saturday">Samedi : Sur rendez-vous</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Col 3: Diaspora Hub -->
+          <div class="footer-col diaspora-col">
+            <h3 class="f-col-title">DIASPORA HUB</h3>
+            <p class="f-diaspora-intro">Canaux directs & sécurisés pour nos clients résidant à l'étranger :</p>
+            <div class="diaspora-channels">
+              <a href="mailto:contact@h2design.ml" class="diaspora-link">
+                <span class="material-symbols-outlined">mail</span>
+                <span>contact@h2design.ml</span>
+              </a>
+              <a href="tel:+22374149914" class="diaspora-link">
+                <span class="material-symbols-outlined">call</span>
+                <span>+223 74 14 99 14</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Col 4: Quick links -->
+          <div class="footer-col nav-col">
+            <h3 class="f-col-title">ACCÈS RAPIDE</h3>
+            <nav class="f-vertical-nav" aria-label="Navigation pied de page">
+              <a href="#">Accueil</a>
+              <a href="#about">À propos de H2</a>
+              <a href="#services">Nos Services</a>
+              <a href="#projects">Nos Réalisations</a>
+              <a href="#contact">Cadrer un projet</a>
+            </nav>
+          </div>
+        </div>
+
+        <!-- Colossal Watermark -->
+        <div class="f-watermark" aria-hidden="true">
+          H2 DESIGN
+        </div>
+
+        <!-- Bottom Deck -->
+        <div class="f-bottom">
+          <p class="f-copy">&copy; 2026 H2 Design. Tous droits réservés.</p>
+          <div class="f-legal">
+            <a href="#" class="f-legal-link">Mentions légales</a>
+            <a href="#" class="f-legal-link">Politique de confidentialité</a>
+          </div>
+          <div class="f-bottom-right">
+            <p class="f-credit">Propulsé par <a href="https://www.digicraftso.com" target="_blank"
+                rel="noopener noreferrer" class="credit-link">DigiCraft</a></p>
+            <a href="#top" class="f-back-to-top" aria-label="Retour en haut de la page">
+              <span>Retour en haut</span>
+              <span class="material-symbols-outlined">arrow_upward</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- WhatsApp Floating Button — replace 22374149914 with the real number -->
+  <a href="https://wa.me/22374149914" class="whatsapp-float" target="_blank" rel="noopener noreferrer"
+    aria-label="Contactez-nous sur WhatsApp">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
+    </svg>
+  </a>
+
+  <script type="module" src="/src/main.js"></script>
+  <!-- impeccable-live-start -->
+  <script src="http://localhost:8089/live.js"></script>
+  <!-- impeccable-live-end -->
+</body>
+
+</html>
