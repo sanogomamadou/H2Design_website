@@ -12,10 +12,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="image" href="/assets/h2_hero_villa_1778682722885.png">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" rel="stylesheet" />
 </head>
 
 <body>
+  <a id="top" aria-hidden="true" tabindex="-1" style="position:absolute;top:0"></a>
   <div id="app">
 
     <!-- Hero Section -->
@@ -77,6 +78,8 @@
                     class="material-symbols-outlined" aria-hidden="true">chevron_right</span></button>
               </div>
             </div>
+            <!-- Accessible live region for screen readers -->
+            <p class="sr-only" id="carousel-live" aria-live="polite" aria-atomic="true"></p>
           </div>
 
           <div class="hero-cards">
@@ -1083,9 +1086,7 @@
   </a>
 
   <script type="module" src="/src/main.js"></script>
-  <!-- impeccable-live-start -->
-  <script src="http://localhost:8089/live.js"></script>
-  <!-- impeccable-live-end -->
+
 </body>
 
 </html>

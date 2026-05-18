@@ -478,6 +478,13 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentHeroIdx = 0;
   let heroInterval;
 
+  const heroImageAlts = [
+    'Villa moderne réalisée par H2 Design à Bamako',
+    'Aménagement intérieur',
+    'Chantier en cours'
+  ];
+  const carouselLive = document.getElementById('carousel-live');
+
   const updateHeroCarousel = (index) => {
     heroImages.forEach((img, i) => {
       if (i === index) {
@@ -493,6 +500,10 @@ document.addEventListener('DOMContentLoaded', () => {
         ind.classList.remove('active');
       }
     });
+    // Announce slide change to screen readers
+    if (carouselLive) {
+      carouselLive.textContent = `Image ${index + 1} sur ${heroImages.length} : ${heroImageAlts[index] || ''}`;
+    }
   };
 
   const nextHeroImage = () => {
@@ -506,7 +517,9 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const startHeroInterval = () => {
-    heroInterval = setInterval(nextHeroImage, 5000); // 5 seconds
+    heroInterval = setInterval(() => {
+      if (document.visibilityState !== 'hidden') nextHeroImage();
+    }, 5000);
   };
 
   const stopHeroInterval = () => {
@@ -598,39 +611,46 @@ document.addEventListener('DOMContentLoaded', () => {
   const bcCurrent = document.getElementById('bc-current');
   const footer = document.querySelector('.site-footer');
 
+  let scrollRafPending = false;
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 80) {
-      navbar?.classList.add('navbar--scrolled');
-    } else {
-      navbar?.classList.remove('navbar--scrolled');
-    }
+    if (scrollRafPending) return;
+    scrollRafPending = true;
+    requestAnimationFrame(() => {
+      scrollRafPending = false;
 
-    if (footer) {
-      const footerTop = footer.getBoundingClientRect().top;
-      if (footerTop < 120) {
-        navbar?.classList.add('navbar--hidden');
+      if (window.scrollY > 80) {
+        navbar?.classList.add('navbar--scrolled');
       } else {
-        navbar?.classList.remove('navbar--hidden');
+        navbar?.classList.remove('navbar--scrolled');
       }
-    }
 
-    // Breadcrumb scrollspy
-    let currentId = '';
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop;
-      if (window.scrollY >= (sectionTop - 150)) {
-        currentId = section.getAttribute('id');
+      if (footer) {
+        const footerTop = footer.getBoundingClientRect().top;
+        if (footerTop < 120) {
+          navbar?.classList.add('navbar--hidden');
+        } else {
+          navbar?.classList.remove('navbar--hidden');
+        }
+      }
+
+      // Breadcrumb scrollspy
+      let currentId = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (window.scrollY >= (sectionTop - 150)) {
+          currentId = section.getAttribute('id');
+        }
+      });
+
+      if (bcCurrent) {
+        if (currentId === 'about') bcCurrent.textContent = 'À propos';
+        else if (currentId === 'services') bcCurrent.textContent = 'Services';
+        else if (currentId === 'expertises') bcCurrent.textContent = 'Expertises';
+        else if (currentId === 'projects') bcCurrent.textContent = 'Réalisations';
+        else if (currentId === 'contact') bcCurrent.textContent = 'Contact';
+        else bcCurrent.textContent = 'Accueil';
       }
     });
-
-    if (bcCurrent) {
-      if (currentId === 'about') bcCurrent.textContent = 'À propos';
-      else if (currentId === 'services') bcCurrent.textContent = 'Services';
-      else if (currentId === 'expertises') bcCurrent.textContent = 'Expertises';
-      else if (currentId === 'projects') bcCurrent.textContent = 'Réalisations';
-      else if (currentId === 'contact') bcCurrent.textContent = 'Contact';
-      else bcCurrent.textContent = 'Accueil';
-    }
   }, { passive: true });
 
   /* =====================================================
@@ -653,13 +673,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Validate a single field
     const validateField = (field) => {
       if (field.hasAttribute('required') && !field.value.trim()) {
-        field.style.borderBottomColor = '#c0392b'; // Red when invalid
+        field.classList.add('field-error');
+        field.style.borderBottomColor = '#c0392b';
         return false;
       } else {
+        field.classList.remove('field-error');
         if (field.value.trim() && field.hasAttribute('required')) {
-          field.style.borderBottomColor = '#E8A33D'; // Orange when valid
+          field.style.borderBottomColor = '#E8A33D';
         } else {
-          field.style.borderBottomColor = ''; // Reset to default line color if empty/optional
+          field.style.borderBottomColor = '';
         }
         return true;
       }
@@ -689,7 +711,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       field.addEventListener('input', () => {
         // Re-validate immediately if currently showing error
-        if (field.style.borderBottomColor === 'rgb(192, 57, 43)' || field.style.borderBottomColor === '#c0392b') {
+        if (field.classList.contains('field-error')) {
           validateField(field);
         }
         checkFormValidity();
@@ -859,7 +881,13 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   updateBamakoTime();
-  setInterval(updateBamakoTime, 5000); // Dynamic update every 5 seconds
+  let bamakoInterval = setInterval(() => {
+    if (document.visibilityState !== 'hidden') updateBamakoTime();
+  }, 5000);
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') updateBamakoTime();
+  });
 
   /* =====================================================
      8. KEYBOARD NAVIGATION
