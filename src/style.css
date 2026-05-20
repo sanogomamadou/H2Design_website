@@ -15,6 +15,10 @@
   --c-text-light: #999999;
   --c-bg-light: #fafafa;
   --c-bg-blue: #EAEFF5;
+  --c-success: #1a9c6b; /* Confirmation green — only used for copy-confirmed state */
+  --c-error: #c0392b;  /* Validation red — only used for field/form error states */
+  --c-border-light: #e0e0e0;
+  --c-border-ultra-light: #eee;
 
 
   --font-main: 'Outfit', system-ui, sans-serif;
@@ -269,6 +273,7 @@ img {
   transition: background 0.4s ease, padding 0.4s ease, border-bottom 0.4s ease, transform 0.4s var(--ease-out-quint);
   background: transparent;
   border-bottom: 1px solid transparent;
+  color: var(--c-white);
 }
 
 .navbar--hidden {
@@ -320,13 +325,15 @@ img {
 .nav-links a {
   font-size: 0.95rem;
   font-weight: 400;
+  color: var(--c-white);
   opacity: 0.8;
-  transition: opacity 0.3s;
+  transition: opacity 0.3s, color 0.3s;
 }
 
 .nav-links a.active,
 .nav-links a:hover {
   opacity: 1;
+  color: var(--c-accent);
 }
 
 .hero-content {
@@ -399,6 +406,14 @@ img {
   cursor: pointer;
   transition: background var(--transition), transform var(--transition);
   transform-origin: left;
+  /* Button reset — element is now a <button> for keyboard accessibility */
+  border: none;
+  padding: 0;
+  border-radius: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  /* Slightly larger hit area for touch without changing visual size */
+  position: relative;
 }
 
 .line-indicator.active {
@@ -469,7 +484,6 @@ img {
   height: 160px;
   object-fit: cover;
   transition: transform 0.6s var(--ease-out-quart);
-  will-change: transform;
 }
 
 .h-card:hover img {
@@ -578,7 +592,6 @@ img {
 .ar-metric .num,
 .ar-metric .lbl {
   transition: transform 0.4s var(--ease-out-quart);
-  will-change: transform;
 }
 
 .ar-metric:hover .num,
@@ -682,6 +695,11 @@ img {
 
 .service-row-full .s-title-group {
   margin-bottom: var(--space-md);
+}
+
+/* Service 04 CTA button spacing — extracted from inline style */
+.s04-cta {
+  margin-top: var(--space-sm);
 }
 
 .service-row-full .s-desc {
@@ -806,7 +824,6 @@ img {
   display: flex;
   height: 100%;
   transition: transform 0.6s var(--ease-out-quart);
-  will-change: transform;
 }
 
 .s-slide {
@@ -925,7 +942,7 @@ img {
 .filter-pills .pill {
   padding: 8px 24px;
   border-radius: var(--radius-pill);
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--c-border-light);
   background: transparent;
   color: var(--c-text);
   font-family: var(--font-main);
@@ -1008,7 +1025,6 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  will-change: transform;
   transition: transform 0.8s var(--ease-out-expo);
 }
 
@@ -1126,7 +1142,7 @@ img {
 
 /* Specifications Table */
 .p-specs {
-  border-left: 1px solid #eee;
+  border-left: 1px solid var(--c-border-ultra-light);
   padding-left: var(--space-md);
 }
 
@@ -1161,7 +1177,7 @@ img {
 .project-card:not(.row-featured) .p-specs {
   border-left: none;
   padding-left: 0;
-  border-top: 1px solid #eee;
+  border-top: 1px solid var(--c-border-ultra-light);
   padding-top: var(--space-xs);
 }
 
@@ -1497,7 +1513,7 @@ img {
   gap: var(--space-lg);
   align-items: end;
   margin-bottom: var(--space-lg);
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--c-border-light);
   padding-bottom: var(--space-lg);
 }
 
@@ -1625,20 +1641,34 @@ img {
 
 @media (max-width: 768px) {
   .t-marquee-container {
-    padding: 15px 0;
-    mask-image: linear-gradient(to right, transparent, white 5%, white 95%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, white 5%, white 95%, transparent);
+    padding: 20px 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    mask-image: none !important;
+    -webkit-mask-image: none !important;
+  }
+
+  .t-marquee-container::-webkit-scrollbar {
+    display: none;
   }
 
   .t-marquee-track {
-    gap: 20px;
-    animation-duration: 32s;
+    gap: 16px;
+    animation: none !important;
+    padding: 0 var(--space-md);
   }
 
   .t-card {
-    width: 320px;
+    width: 290px;
     padding: 24px;
     gap: 20px;
+    scroll-snap-align: start;
+  }
+
+  .t-card[aria-hidden="true"] {
+    display: none !important;
   }
 
   .t-card-quote {
@@ -1846,6 +1876,28 @@ img {
   border-bottom-color: var(--c-navy);
 }
 
+/* Field validation states — toggled by JS via classList, not inline styles */
+.form-group input.field-error,
+.form-group select.field-error,
+.form-group textarea.field-error {
+  border-bottom-color: var(--c-error);
+}
+
+.form-group input.field-valid,
+.form-group select.field-valid,
+.form-group textarea.field-valid {
+  border-bottom-color: var(--c-accent);
+}
+
+/* Constraint hint text shown below constrained fields */
+.field-hint {
+  font-size: 0.75rem;
+  color: var(--c-text-light);
+  margin-top: 4px;
+  display: block;
+  line-height: 1.4;
+}
+
 .form-group textarea {
   resize: vertical;
   min-height: 110px;
@@ -1997,6 +2049,17 @@ img {
   line-height: 1.5;
 }
 
+/* Submit button states */
+.btn-dark.btn--pending {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-dark.btn--loading {
+  opacity: 0.6;
+  cursor: wait;
+}
+
 /* Error Alert State */
 .form-error {
   display: flex;
@@ -2005,7 +2068,7 @@ img {
   padding: 16px 20px;
   background: #fdf2f2;
   border-radius: var(--radius-sm);
-  color: #c0392b;
+  color: var(--c-error);
   margin-bottom: 4px;
   border: 1px solid rgba(192, 57, 43, 0.15);
 }
@@ -2016,7 +2079,7 @@ img {
 
 .form-error .material-symbols-outlined {
   font-size: 1.4rem;
-  color: #c0392b;
+  color: var(--c-error);
 }
 
 .form-error p {
@@ -2028,12 +2091,12 @@ img {
 /* Success Card State */
 .form-success {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
   padding: 24px;
-  background: #fff8f0; /* Soft warm tinted orange background */
+  background: #fff8f0;
   border-radius: var(--radius-md);
-  color: #d97706; /* Rich amber orange text */
+  color: var(--c-accent);
   border: 1px solid rgba(232, 163, 61, 0.2);
 }
 
@@ -2043,13 +2106,85 @@ img {
 
 .form-success .material-symbols-outlined {
   font-size: 1.6rem;
-  color: #d97706;
+  color: var(--c-accent);
 }
 
 .form-success p {
   font-size: 0.95rem;
   font-weight: 500;
   margin: 0;
+}
+
+/* Success card inner layout (injected dynamically by JS) */
+.success-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.success-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.success-header .material-symbols-outlined {
+  font-size: 2.2rem;
+  color: var(--c-accent);
+  flex-shrink: 0;
+}
+
+.success-header h4 {
+  margin: 0;
+  color: var(--c-accent);
+  font-size: 1.15rem;
+  font-family: var(--font-heading);
+  font-weight: 500;
+}
+
+.success-header p {
+  margin: 4px 0 0;
+  color: var(--c-navy);
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+
+.success-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.btn-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: var(--radius-pill);
+  font-size: 0.95rem;
+  font-family: var(--font-main);
+  background: transparent;
+  color: var(--c-navy);
+  border: 1px solid #e0e0e0;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-out-quart);
+}
+
+.btn-copy:hover {
+  border-color: var(--c-navy);
+  background: rgba(43, 58, 86, 0.05);
+}
+
+.btn-copy.is-copied {
+  color: var(--c-success);
+  border-color: var(--c-success);
+}
+
+.btn-copy .material-symbols-outlined {
+  font-size: 1.2rem;
 }
 
 /* --- Live Field Command & Monograph Deck --- */
@@ -2118,6 +2253,12 @@ img {
   background-color: #25D366;
   border-radius: 50%;
   display: inline-block;
+}
+
+/* Amber static variant used in the Guarantee badge (no pulse animation) */
+.pulse-dot--accent {
+  background-color: var(--c-accent);
+  animation: none;
 }
 
 .pulse-ring {
@@ -2301,6 +2442,24 @@ img {
     grid-template-columns: 1fr;
   }
 
+  .project-card.row-featured,
+  .project-card.row-left,
+  .project-card.row-right {
+    grid-column: span 1 !important;
+  }
+
+  .p-meta-grid {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-xs);
+  }
+
+  .p-specs {
+    border-left: none !important;
+    padding-left: 0 !important;
+    border-top: 1px solid var(--c-border-ultra-light, #eee);
+    padding-top: var(--space-xs);
+  }
+
   .expertises-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -2335,6 +2494,20 @@ img {
 
   .cta-header {
     position: static;
+  }
+
+  /* Live field deck: collapse to single column and neutralise the negative margin
+     that bleeds into the footer \u2014 that overlap only works on desktop */
+  .live-field-deck {
+    grid-template-columns: 1fr;
+    margin-bottom: 0;
+    padding-bottom: var(--space-xl);
+  }
+
+  .field-monograph-card,
+  .distant-trust-card {
+    border-radius: var(--radius-md); /* Restore all 4 corners on mobile */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08); /* Re-add removed desktop bottom border */
   }
 
   /* Projects Filter Pills & Header mobile wrapping */

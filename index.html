@@ -19,6 +19,33 @@
   <a id="top" aria-hidden="true" tabindex="-1" style="position:absolute;top:0"></a>
   <div id="app">
 
+    <!-- Site Header (top-level landmark — position:fixed, visually overlays the hero) -->
+    <header class="navbar">
+      <div class="nav-left">
+        <div class="logo">H2 Design</div>
+        <div class="breadcrumb" aria-hidden="true">
+          <span class="sep">/</span>
+          <span id="bc-current">Accueil</span>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Toggle -->
+      <button class="mobile-menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+
+      <nav class="nav-links">
+        <a href="#" class="active">Accueil</a>
+        <a href="#about">À propos</a>
+        <a href="#services">Services</a>
+        <a href="#projects">Réalisations</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="#contact-form" class="btn-dark pill">Contactez-nous <span
+          class="material-symbols-outlined">north_east</span></a>
+    </header>
+    <div class="nav-overlay" id="nav-overlay"></div>
+
     <!-- Hero Section -->
     <section class="hero-section">
       <div class="hero-bg" id="hero-carousel">
@@ -28,32 +55,6 @@
         <img src="/assets/h2_project_construction_1778682750140.png" class="carousel-img" alt="Chantier en cours" />
         <div class="hero-overlay"></div>
       </div>
-
-      <header class="navbar">
-        <div class="nav-left">
-          <div class="logo">H2 Design</div>
-          <div class="breadcrumb" aria-hidden="true">
-            <span class="sep">/</span>
-            <span id="bc-current">Accueil</span>
-          </div>
-        </div>
-
-        <!-- Mobile Menu Toggle -->
-        <button class="mobile-menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
-          <span class="material-symbols-outlined">menu</span>
-        </button>
-
-        <nav class="nav-links">
-          <a href="#" class="active">Accueil</a>
-          <a href="#about">À propos</a>
-          <a href="#services">Services</a>
-          <a href="#projects">Réalisations</a>
-          <a href="#contact">Contact</a>
-        </nav>
-        <a href="#contact-form" class="btn-dark pill">Contactez-nous <span
-            class="material-symbols-outlined">north_east</span></a>
-      </header>
-      <div class="nav-overlay" id="nav-overlay"></div>
 
       <div class="hero-content">
         <h1 class="hero-title">
@@ -67,9 +68,9 @@
             </p>
             <div class="hero-controls" id="hero-controls">
               <div class="carousel-indicators">
-                <span class="line-indicator active" data-index="0"></span>
-                <span class="line-indicator" data-index="1"></span>
-                <span class="line-indicator" data-index="2"></span>
+                <button class="line-indicator active" data-index="0" aria-label="Aller à l'image 1" aria-pressed="true"></button>
+                <button class="line-indicator" data-index="1" aria-label="Aller à l'image 2" aria-pressed="false"></button>
+                <button class="line-indicator" data-index="2" aria-label="Aller à l'image 3" aria-pressed="false"></button>
               </div>
               <div class="carousel-nav">
                 <button class="carousel-btn prev-btn" aria-label="Image précédente"><span
@@ -84,7 +85,7 @@
 
           <div class="hero-cards">
             <a href="#projects" class="h-card" aria-label="Voir le projet Villa ACI 2000">
-              <img src="/assets/h2_project_construction_1778682750140.png" alt="Villa ACI 2000" />
+              <img src="/assets/h2_project_construction_1778682750140.png" alt="Villa ACI 2000" width="280" height="160" />
               <div class="h-card-content">
                 <div>
                   <p class="h-card-title">Villa ACI 2000</p>
@@ -94,7 +95,7 @@
               </div>
             </a>
             <a href="#projects" class="h-card h-card-secondary" aria-label="Voir le projet Résidence Sotuba">
-              <img src="/assets/h2_interior_wood_1778682764614.png" alt="Résidence Sotuba" />
+              <img src="/assets/h2_interior_wood_1778682764614.png" alt="Résidence Sotuba" width="280" height="160" />
             </a>
           </div>
         </div>
@@ -113,7 +114,7 @@
 
         <div class="ar-middle reveal delay-1">
           <div class="ar-image-wrapper">
-            <img src="/assets/h2_interior_wood_1778682764614.png" alt="Intérieur bois et béton" loading="lazy" />
+            <img src="/assets/h2_interior_wood_1778682764614.png" alt="Intérieur bois et béton" width="800" height="500" loading="lazy" />
           </div>
           <div class="ar-metrics">
             <div class="ar-metric">
@@ -325,7 +326,7 @@
                 <span class="s-meta-value">Mobilier sur mesure, Aménagement paysager</span>
               </div>
             </div>
-            <a href="#expertises" class="btn-dark pill" style="margin-top: 16px;">Voir nos expertises <span
+            <a href="#expertises" class="btn-dark pill s04-cta">Voir nos expertises <span
                 class="material-symbols-outlined">north_east</span></a>
           </div>
           <div class="s-image-full">
@@ -416,7 +417,7 @@
         <!-- Project 1 (Villa Contemporaine ACI 2000) -->
         <div class="project-card reveal row-featured" data-id="villa-aci" data-category="construction" role="button" tabindex="0" aria-label="Consulter les détails du projet Villa Contemporaine ACI 2000" aria-expanded="false">
           <div class="p-img">
-            <img src="/assets/h2_hero_villa_1778682722885.png" alt="Villa Moderne ACI 2000" loading="lazy" />
+            <img src="/assets/h2_hero_villa_1778682722885.png" alt="Villa Moderne ACI 2000" width="1200" height="525" loading="lazy" />
             <div class="p-overlay">
               <span class="p-badge status-badge badge-success">Livré • Clés en main</span>
               <button class="btn-circle overlay-btn" aria-label="Consulter les détails du projet"><span
@@ -453,8 +454,7 @@
         <!-- Project 2 (Résidence Familiale Sotuba) -->
         <div class="project-card reveal delay-1 row-left" data-id="residence-sotuba" data-category="construction" role="button" tabindex="0" aria-label="Consulter les détails du projet Résidence Familiale Sotuba" aria-expanded="false">
           <div class="p-img">
-            <img src="/assets/h2_project_construction_1778682750140.png" alt="Résidence Familiale Sotuba"
-              loading="lazy" />
+            <img src="/assets/h2_project_construction_1778682750140.png" alt="Résidence Familiale Sotuba" width="800" height="1000" loading="lazy" />
             <div class="p-overlay">
               <span class="p-badge status-badge badge-warning">Finitions en cours</span>
               <button class="btn-circle overlay-btn" aria-label="Consulter les détails du projet"><span
@@ -492,7 +492,7 @@
         <div class="project-card reveal delay-2 row-right" data-id="renovation-badala" data-category="renovation" role="button" tabindex="0" aria-label="Consulter les détails du projet Rénovation Badalabougou" aria-expanded="false">
           <div class="p-img">
             <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80"
-              alt="Rénovation Badalabougou" loading="lazy" />
+              alt="Rénovation Badalabougou" width="800" height="600" loading="lazy" />
             <div class="p-overlay">
               <span class="p-badge status-badge badge-success">Livré • Rénovation</span>
               <button class="btn-circle overlay-btn" aria-label="Consulter les détails du projet"><span
@@ -530,7 +530,7 @@
         <div class="project-card reveal delay-3 row-featured" data-id="extension-hippo"
           data-category="extension interior" role="button" tabindex="0" aria-label="Consulter les détails du projet Extension et Rénovation" aria-expanded="false">
           <div class="p-img">
-            <img src="/assets/h2_interior_wood_1778682764614.png" alt="Extension Villa Hippodrome" loading="lazy" />
+            <img src="/assets/h2_interior_wood_1778682764614.png" alt="Extension Villa Hippodrome" width="1200" height="525" loading="lazy" />
             <div class="p-overlay">
               <span class="p-badge status-badge badge-success">Livré • Clés en main</span>
               <button class="btn-circle overlay-btn" aria-label="Consulter les détails du projet"><span
@@ -809,7 +809,7 @@
               <span class="sla-dot"></span>
               <span class="sla-pulse"></span>
             </span>
-            <span class="sla-text"><strong id="bamako-time-display">Bamako 10:05 GMT</strong> • Temps de réponse : &lt;
+            <span class="sla-text"><strong id="bamako-time-display"></strong> • Temps de réponse : &lt;
               12h • Disponible pour vos projets</span>
           </div>
 
@@ -831,12 +831,17 @@
           <div class="form-row">
             <div class="form-group">
               <label for="cf-name">Nom complet</label>
-              <input type="text" id="cf-name" name="name" placeholder="Votre nom" autocomplete="name" required />
+              <input type="text" id="cf-name" name="name" placeholder="Votre nom"
+                autocomplete="name" maxlength="80" required
+                aria-describedby="cf-name-hint" />
+              <span id="cf-name-hint" class="field-hint">80 caractères max.</span>
             </div>
             <div class="form-group">
               <label for="cf-whatsapp">WhatsApp / Téléphone</label>
-              <input type="tel" id="cf-whatsapp" name="whatsapp" placeholder="+223 ou +33…" autocomplete="tel"
-                required />
+              <input type="tel" id="cf-whatsapp" name="whatsapp" placeholder="+223 ou +33…"
+                autocomplete="tel" minlength="8" maxlength="20" required
+                aria-describedby="cf-wa-hint" />
+              <span id="cf-wa-hint" class="field-hint">Format international — ex. +223 XX XX XX XX</span>
             </div>
           </div>
           <div class="form-group">
@@ -894,7 +899,10 @@
           <div class="form-group">
             <label for="cf-message">Votre message</label>
             <textarea id="cf-message" name="message" rows="4"
-              placeholder="Décrivez votre projet, localisation, budget estimé…" required></textarea>
+              placeholder="Décrivez votre projet, localisation, budget estimé…"
+              maxlength="1000" required
+              aria-describedby="cf-msg-hint"></textarea>
+            <span id="cf-msg-hint" class="field-hint">1000 caractères max.</span>
           </div>
 
           <div class="form-submit">
@@ -924,7 +932,7 @@
             <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80"
               alt="Villa moderne H2 Design Bamako" loading="lazy" />
             <div class="field-badge">
-              <span class="pulse-dot" style="animation: none; background-color: #E8A33D;"></span>
+              <span class="pulse-dot pulse-dot--accent"></span>
               <span class="badge-text">GARANTIE H2 DESIGN • 100% TRANSPARENCE</span>
             </div>
             <div class="field-telemetry">
@@ -952,7 +960,7 @@
             garanties décennales, nos modes de paiement sécurisés par étapes et notre gestion à distance.</p>
           <div class="dt-actions">
             <a href="https://wa.me/22374149914" class="btn-dark pill dt-btn-primary" target="_blank"
-              rel="noopener noreferrer" style="text-decoration: none;">
+              rel="noopener noreferrer">
               <span class="material-symbols-outlined">call</span> Échange WhatsApp Direct
             </a>
             <a href="#projects" class="btn-outline-pill dt-btn-secondary">
@@ -1014,7 +1022,7 @@
             <div class="office-time">
               <span class="material-symbols-outlined time-icon">schedule</span>
               <div class="time-text">
-                <span class="bamako-time" id="footer-bamako-time">Bamako 18:40 GMT</span>
+                <span class="bamako-time" id="footer-bamako-time"></span>
                 <span class="work-days">Lun - Ven : 08:00 - 18:00</span>
                 <span class="work-saturday">Samedi : Sur rendez-vous</span>
               </div>

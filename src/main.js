@@ -27,12 +27,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const navLinks = document.querySelector('.nav-links');
   const navOverlay = document.getElementById('nav-overlay');
   const menuIcon = menuToggle?.querySelector('.material-symbols-outlined');
+  let menuFocusCache = [];
 
   function openMenu() {
     navLinks?.classList.add('is-open');
     navOverlay?.classList.add('is-open');
     menuToggle?.setAttribute('aria-expanded', 'true');
     if (menuIcon) menuIcon.textContent = 'close';
+    document.body.style.overflow = 'hidden';
+
+    setTimeout(() => {
+      menuToggle?.focus();
+      const links = navLinks ? [...navLinks.querySelectorAll('a')] : [];
+      menuFocusCache = menuToggle ? [menuToggle, ...links] : links;
+    }, 50);
   }
 
   function closeMenu() {
@@ -40,6 +48,12 @@ document.addEventListener('DOMContentLoaded', () => {
     navOverlay?.classList.remove('is-open');
     menuToggle?.setAttribute('aria-expanded', 'false');
     if (menuIcon) menuIcon.textContent = 'menu';
+
+    const drawer = document.getElementById('project-drawer');
+    if (!drawer?.classList.contains('is-open')) {
+      document.body.style.overflow = '';
+    }
+    menuFocusCache = [];
   }
 
   menuToggle?.addEventListener('click', () => {
@@ -48,9 +62,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
   navOverlay?.addEventListener('click', closeMenu);
 
-  // Close on Escape key
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeMenu();
+    if (e.key === 'Tab' && navLinks?.classList.contains('is-open') && menuFocusCache.length > 0) {
+      const firstEl = menuFocusCache[0];
+      const lastEl = menuFocusCache[menuFocusCache.length - 1];
+      if (e.shiftKey) {
+        if (document.activeElement === firstEl) {
+          lastEl?.focus();
+          e.preventDefault();
+        }
+      } else {
+        if (document.activeElement === lastEl) {
+          firstEl?.focus();
+          e.preventDefault();
+        }
+      }
+    }
+  });
+
+  // Unified Escape key handler — priority chain: drawer first, then menu.
+  // Two separate listeners would fire simultaneously if both were open,
+  // causing conflicting overflow restoration. One handler, one responsibility.
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    if (drawer?.classList.contains('is-open')) {
+      closeDrawer();
+    } else {
+      closeMenu();
+    }
   });
 
   /* =====================================================
@@ -393,9 +432,12 @@ document.addEventListener('DOMContentLoaded', () => {
     drawer.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
 
-    // Move focus to close button
+    // Move focus to close button, then capture a stable focusable list.
+    // We read the DOM once after the open animation rather than on every Tab
+    // keypress — prevents the list from shifting as lazy-loaded images paint.
     setTimeout(() => {
       drawerCloseBtn?.focus();
+      cacheFocusableEls();
     }, 600);
   }
 
@@ -408,6 +450,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!navLinks?.classList.contains('is-open')) {
       document.body.style.overflow = '';
     }
+    // Clear the cached focus list and stop the observer
+    drawerFocusCache = [];
+    drawerMutationObserver?.disconnect();
     if (lastActiveElement) {
       if (lastActiveElement.classList?.contains('project-card')) {
         lastActiveElement.setAttribute('aria-expanded', 'false');
@@ -417,22 +462,39 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Focus trap inside drawer
+  // --- Stable Focus Trap ---
+  // Cache is built once on open, refreshed by MutationObserver if drawer content
+  // changes (e.g. dynamic content injection). Avoids querying live DOM on every Tab.
+  const FOCUSABLE_SELECTORS = 'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+  let drawerFocusCache = [];
+  let drawerMutationObserver = null;
+
+  const cacheFocusableEls = () => {
+    if (!drawer) return;
+    drawerFocusCache = [...drawer.querySelectorAll(FOCUSABLE_SELECTORS)];
+
+    // Watch for any subsequent DOM changes inside the drawer and refresh cache
+    drawerMutationObserver?.disconnect();
+    drawerMutationObserver = new MutationObserver(() => {
+      drawerFocusCache = [...drawer.querySelectorAll(FOCUSABLE_SELECTORS)];
+    });
+    drawerMutationObserver.observe(drawer, { childList: true, subtree: true });
+  };
+
+  // Focus trap — reads from stable cache, never queries live DOM during keypress
   drawer?.addEventListener('keydown', e => {
-    if (e.key === 'Tab') {
-      const focusableEls = drawer.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-      const firstEl = focusableEls[0];
-      const lastEl = focusableEls[focusableEls.length - 1];
-      if (e.shiftKey) {
-        if (document.activeElement === firstEl) {
-          lastEl?.focus();
-          e.preventDefault();
-        }
-      } else {
-        if (document.activeElement === lastEl) {
-          firstEl?.focus();
-          e.preventDefault();
-        }
+    if (e.key !== 'Tab' || drawerFocusCache.length === 0) return;
+    const firstEl = drawerFocusCache[0];
+    const lastEl = drawerFocusCache[drawerFocusCache.length - 1];
+    if (e.shiftKey) {
+      if (document.activeElement === firstEl) {
+        lastEl?.focus();
+        e.preventDefault();
+      }
+    } else {
+      if (document.activeElement === lastEl) {
+        firstEl?.focus();
+        e.preventDefault();
       }
     }
   });
@@ -463,10 +525,7 @@ document.addEventListener('DOMContentLoaded', () => {
   drawerOverlay?.addEventListener('click', closeDrawer);
   drawerCloseBtn?.addEventListener('click', closeDrawer);
 
-  // Close on Escape key
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeDrawer();
-  });
+  // (Escape key handling is managed by the unified handler registered in section 2)
 
   /* =====================================================
      4b. HERO CAROUSEL
@@ -496,8 +555,10 @@ document.addEventListener('DOMContentLoaded', () => {
     heroIndicators.forEach((ind, i) => {
       if (i === index) {
         ind.classList.add('active');
+        ind.setAttribute('aria-pressed', 'true');
       } else {
         ind.classList.remove('active');
+        ind.setAttribute('aria-pressed', 'false');
       }
     });
     // Announce slide change to screen readers
@@ -611,21 +672,49 @@ document.addEventListener('DOMContentLoaded', () => {
   const bcCurrent = document.getElementById('bc-current');
   const footer = document.querySelector('.site-footer');
 
+  // Cache section offsetTop values to avoid layout thrash inside the rAF scroll loop.
+  // offsetTop forces a synchronous layout reflow on every read — reading it 6× per frame
+  // is a guaranteed performance issue on low-end devices. We read once and cache.
+  let sectionOffsets = [];
+  let footerOffsetTop = 0;
+  const cacheSectionOffsets = () => {
+    sectionOffsets = [...sections].map(s => ({
+      id: s.getAttribute('id'),
+      top: s.offsetTop
+    }));
+    if (footer) {
+      footerOffsetTop = footer.offsetTop;
+    }
+  };
+  cacheSectionOffsets();
+
+  // Refresh cache on resize (debounced — layout shifts after viewport change)
+  let _resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(_resizeTimer);
+    _resizeTimer = setTimeout(() => {
+      cacheSectionOffsets();
+      if (window.innerWidth > 1024) {
+        closeMenu();
+      }
+    }, 200);
+  });
+
   let scrollRafPending = false;
   window.addEventListener('scroll', () => {
     if (scrollRafPending) return;
     scrollRafPending = true;
     requestAnimationFrame(() => {
       scrollRafPending = false;
-
+ 
       if (window.scrollY > 80) {
         navbar?.classList.add('navbar--scrolled');
       } else {
         navbar?.classList.remove('navbar--scrolled');
       }
-
+ 
       if (footer) {
-        const footerTop = footer.getBoundingClientRect().top;
+        const footerTop = footerOffsetTop - window.scrollY;
         if (footerTop < 120) {
           navbar?.classList.add('navbar--hidden');
         } else {
@@ -633,12 +722,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
 
-      // Breadcrumb scrollspy
+      // Breadcrumb scrollspy — reads from cached offsets, no layout reflow
       let currentId = '';
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        if (window.scrollY >= (sectionTop - 150)) {
-          currentId = section.getAttribute('id');
+      sectionOffsets.forEach(({ id, top }) => {
+        if (window.scrollY >= (top - 150)) {
+          currentId = id;
         }
       });
 
@@ -672,16 +760,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Validate a single field
     const validateField = (field) => {
-      if (field.hasAttribute('required') && !field.value.trim()) {
+      const isEmpty = !field.value.trim();
+
+      // Phone format check for WhatsApp field (international number, 8-20 chars)
+      if (field.id === 'cf-whatsapp' && !isEmpty) {
+        const phonePattern = /^[+]?[\d\s\-().]{8,20}$/;
+        if (!phonePattern.test(field.value.trim())) {
+          field.classList.add('field-error');
+          field.classList.remove('field-valid');
+          return false;
+        }
+      }
+
+      if (field.hasAttribute('required') && isEmpty) {
         field.classList.add('field-error');
-        field.style.borderBottomColor = '#c0392b';
+        field.classList.remove('field-valid');
         return false;
       } else {
         field.classList.remove('field-error');
         if (field.value.trim() && field.hasAttribute('required')) {
-          field.style.borderBottomColor = '#E8A33D';
+          field.classList.add('field-valid');
         } else {
-          field.style.borderBottomColor = '';
+          field.classList.remove('field-valid');
         }
         return true;
       }
@@ -697,8 +797,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
       submitBtn.disabled = !isValid;
-      submitBtn.style.opacity = isValid ? '1' : '0.5';
-      submitBtn.style.cursor = isValid ? 'pointer' : 'not-allowed';
+      // Use CSS class for disabled visual state, not inline opacity/cursor
+      submitBtn.classList.toggle('btn--pending', !isValid);
       if (isValid && errorPanel) errorPanel.hidden = true;
     };
 
@@ -768,7 +868,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Submission animation loading state
       submitBtn.disabled = true;
-      submitBtn.style.opacity = '0.6';
+      submitBtn.classList.add('btn--loading');
       submitBtn.innerHTML = 'Préparation en cours… <span class="material-symbols-outlined">sync</span>';
 
       // Simulate sending animation
@@ -796,27 +896,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const waUrl = `https://wa.me/22374149914?text=${encodeURIComponent(waText)}`;
 
-        // Show premium success card with immediate follow-up button and copy fallback
+        // Show success card — uses CSS classes only, no inline colors
         if (successPanel) {
           successPanel.hidden = false;
           successPanel.innerHTML = `
-            <div style="display: flex; flex-direction: column; gap: 16px; width: 100%;">
-              <div style="display: flex; align-items: center; gap: 16px;">
-                <span class="material-symbols-outlined" style="font-size: 2.2rem; color: #d97706;">check_circle</span>
+            <div class="success-inner">
+              <div class="success-header">
+                <span class="material-symbols-outlined" aria-hidden="true">check_circle</span>
                 <div>
-                  <h4 style="margin: 0; color: #d97706; font-size: 1.15rem; font-family: var(--font-heading);">Détails de cadrage configurés.</h4>
-                  <p style="margin: 4px 0 0; color: #2c3e50; font-size: 0.95rem;">Cliquez ci-dessous pour lancer la discussion WhatsApp ou copiez le message si votre navigateur bloque l'ouverture automatique.</p>
+                  <h4>Détails de cadrage configurés.</h4>
+                  <p>Cliquez ci-dessous pour lancer la discussion WhatsApp ou copiez le message si votre navigateur bloque l’ouverture automatique.</p>
                 </div>
               </div>
-              <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 12px;">
-                <a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="btn-whatsapp" style="background: var(--c-accent); color: var(--c-darker); border-color: var(--c-accent); padding: 12px 24px; border-radius: 50px; font-size: 0.95rem; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; font-weight: 600; box-shadow: 0 4px 12px rgba(232, 163, 61, 0.25);">
+              <div class="success-actions">
+                <a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
                   <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
                   </svg>
                   Démarrer la discussion
                 </a>
-                <button type="button" id="cf-copy-btn" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 50px; font-size: 0.95rem; background: transparent; color: #2c3e50; border: 1px solid #cbd5e1; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
-                  <span class="material-symbols-outlined" style="font-size: 1.2rem;">content_copy</span> Copier le message
+                <button type="button" id="cf-copy-btn" class="btn-copy">
+                  <span class="material-symbols-outlined">content_copy</span> Copier le message
                 </button>
               </div>
             </div>
@@ -826,13 +926,11 @@ document.addEventListener('DOMContentLoaded', () => {
           if (copyBtn) {
             copyBtn.addEventListener('click', () => {
               navigator.clipboard.writeText(waText).then(() => {
-                copyBtn.innerHTML = '<span class="material-symbols-outlined" style="font-size: 1.2rem; color: #10b981;">check</span> Message copié !';
-                copyBtn.style.borderColor = '#10b981';
-                copyBtn.style.color = '#10b981';
+                copyBtn.innerHTML = '<span class="material-symbols-outlined">check</span> Message copié !';
+                copyBtn.classList.add('is-copied');
                 setTimeout(() => {
-                  copyBtn.innerHTML = '<span class="material-symbols-outlined" style="font-size: 1.2rem;">content_copy</span> Copier le message';
-                  copyBtn.style.borderColor = '#cbd5e1';
-                  copyBtn.style.color = '#2c3e50';
+                  copyBtn.innerHTML = '<span class="material-symbols-outlined">content_copy</span> Copier le message';
+                  copyBtn.classList.remove('is-copied');
                 }, 3000);
               }).catch(err => {
                 console.error('Erreur de copie:', err);
