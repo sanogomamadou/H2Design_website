@@ -257,7 +257,7 @@ img {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(43, 58, 86, 0.2) 0%, rgba(27, 37, 56, 0.8) 100%);
+  background: linear-gradient(180deg, rgba(43, 58, 86, 0.5) 0%, rgba(27, 37, 56, 0.85) 100%);
 }
 
 .navbar {
@@ -361,6 +361,7 @@ img {
   line-height: 1.1;
   letter-spacing: -0.03em;
   margin-top: 0;
+  text-shadow: 0 4px 24px rgba(0,0,0,0.7);
 }
 
 .title-btn {
@@ -394,6 +395,7 @@ img {
   max-width: 220px;
   font-size: 1rem;
   opacity: 0.9;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.8);
 }
 
 .hero-controls {
@@ -1104,7 +1106,7 @@ img {
 }
 
 .badge-success {
-  border: 1px solid rgba(37, 211, 102, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .badge-warning {
@@ -3158,7 +3160,8 @@ img {
   .live-field-deck {
     grid-template-columns: 1fr;
     gap: 32px;
-    margin-bottom: 64px;
+    margin-bottom: 0;
+    padding-bottom: 64px;
   }
 
   .field-monograph-card {

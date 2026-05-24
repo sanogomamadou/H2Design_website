@@ -971,12 +971,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const parts = formatter.formatToParts(new Date());
         const hour = parts.find(p => p.type === 'hour').value;
         const minute = parts.find(p => p.type === 'minute').value;
-        return `Bamako ${hour}:${minute} GMT+0`;
+        return `Bamako ${hour}:${minute} GMT`;
       } catch (e) {
         const now = new Date();
         const utcHour = String(now.getUTCHours()).padStart(2, '0');
         const utcMin = String(now.getUTCMinutes()).padStart(2, '0');
-        return `Bamako ${utcHour}:${utcMin} GMT+0`;
+        return `Bamako ${utcHour}:${utcMin} GMT`;
       }
     };
 
