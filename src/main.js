@@ -9,7 +9,14 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', e => {
       const targetId = anchor.getAttribute('href');
-      if (targetId === '#') return;
+      if (targetId === '#') {
+        e.preventDefault();
+        closeMenu();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+        anchor.classList.add('active');
+        return;
+      }
       const target = document.querySelector(targetId);
       if (!target) return;
       e.preventDefault();
