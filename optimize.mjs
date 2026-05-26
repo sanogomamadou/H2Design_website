@@ -15,8 +15,18 @@ if (!fs.existsSync(outDir)) {
 
 async function optimizeMedia() {
   const files = fs.readdirSync(imgDir);
-  let imgCount = 1;
-  let vidCount = 1;
+  const existingAssets = fs.existsSync(outDir) ? fs.readdirSync(outDir) : [];
+  let maxImg = 0;
+  let maxVid = 0;
+  existingAssets.forEach(f => {
+    const imgMatch = f.match(/^opt_img_(\d+)\.webp$/);
+    if (imgMatch) maxImg = Math.max(maxImg, parseInt(imgMatch[1], 10));
+    const vidMatch = f.match(/^opt_video_(\d+)\.mp4$/);
+    if (vidMatch) maxVid = Math.max(maxVid, parseInt(vidMatch[1], 10));
+  });
+
+  let imgCount = maxImg + 1;
+  let vidCount = maxVid + 1;
 
   for (const file of files) {
     const ext = path.extname(file).toLowerCase();

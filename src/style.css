@@ -289,6 +289,13 @@ img {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Add text-shadow to navbar text only when at the top (transparent background) for legibility against bright backgrounds */
+.navbar:not(.navbar--scrolled) .logo,
+.navbar:not(.navbar--scrolled) .nav-links:not(.is-open) a,
+.navbar:not(.navbar--scrolled) .mobile-menu-toggle {
+  text-shadow: 0 1px 3px rgba(0,0,0,0.9), 0 4px 16px rgba(0,0,0,0.8), 0 8px 30px rgba(0,0,0,0.6);
+}
+
 .nav-left {
   display: flex;
   align-items: center;
@@ -415,8 +422,7 @@ img {
   height: 2px;
   background: rgba(255, 255, 255, 0.3);
   cursor: pointer;
-  transition: background var(--transition), transform var(--transition);
-  transform-origin: left;
+  transition: background var(--transition), width var(--transition);
   /* Button reset — element is now a <button> for keyboard accessibility */
   border: none;
   padding: 0;
@@ -428,7 +434,7 @@ img {
 }
 
 .line-indicator.active {
-  transform: scaleX(1.5);
+  width: 60px;
   background: var(--c-white);
 }
 
@@ -2448,7 +2454,8 @@ img {
 }
 
 .dt-btn-primary:hover {
-  background: #d97706;
+  background: var(--c-navy);
+  color: var(--c-white);
   transform: translateY(-2px);
 }
 
@@ -2723,15 +2730,15 @@ img {
   position: fixed;
   bottom: 28px;
   right: 28px;
-  background-color: #25D366;
-  color: #fff;
+  background-color: var(--c-accent);
+  color: var(--c-darker);
   width: 60px;
   height: 60px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+  box-shadow: 0 4px 16px rgba(232, 163, 61, 0.4);
   z-index: 990;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   text-decoration: none;
@@ -2739,7 +2746,7 @@ img {
 
 .whatsapp-float:hover {
   transform: translateY(-4px) scale(1.05);
-  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.5);
+  box-shadow: 0 8px 24px rgba(232, 163, 61, 0.5);
 }
 
 /* --- SCREEN READER ONLY --- */
