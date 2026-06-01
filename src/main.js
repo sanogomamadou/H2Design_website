@@ -279,7 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ],
       testimonial: {
         text: "H2 Design a réalisé nos bureaux de A à Z, de la conception jusqu'à la décoration. Le résultat est à la hauteur de l'image que nous voulons donner à notre entreprise. Délais et budget respectés.",
-        author: "Ibrahim T."
+        author: "Diakaridia T."
       },
       timeline: [
         {
@@ -327,7 +327,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ],
       testimonial: {
         text: "H2 Design a construit notre bâtiment à Niamakoro Courani du début à la fin. Le travail de finition est remarquable, de la façade Alucobond aux rampes en Inox. Résultat conforme à nos attentes.",
-        author: "Moussa S."
+        author: "Mr Diaouné"
       },
       timeline: [
         {
