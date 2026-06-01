@@ -169,170 +169,188 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Dynamic Case Study Data Store for Distant Trust
   const projectDetails = {
-    'villa-aci': {
-      title: "Villa Contemporaine ACI 2000",
-      category: "Construction",
-      location: "Bamako, Mali",
-      img: "/assets/h2_hero_villa_1778682722885.png",
+    'bâtiment-r4-abidjan': {
+      title: "Bâtiment R+4 Abidjan",
+      category: "Finition",
+      location: "Abidjan, Côte d'Ivoire",
+      img: "/assets/opt_img_48.webp",
+      drawerDesc: "Nous intervenons sur les finitions complètes de cet immeuble R+4 à Abidjan : façade Alucobond, menuiseries aluminium et PVC, mur rideau, carrelage, peinture, luminaires et sanitaires. Le carrelage et l'Alucobond sont terminés, les autres lots sont en cours de réalisation.",
       specs: [
-        { label: "Superficie", value: "450 m²" },
-        { label: "Lots réalisés", value: "BIM, Gros œuvre, Finitions" },
-        { label: "Typologie", value: "Villa R+1" },
-        { label: "Suivi", value: "100% à distance" },
-        { label: "Structure", value: "R+1 béton armé & verre" }
+        { label: "Superficie", value: "500 m²" },
+        { label: "Lots réalisés", value: "Finitions" },
+        { label: "Typologie", value: "Immeuble R+4" },
+        { label: "Statut", value: "En cours" },
+        { label: "Année", value: "2026" }
       ],
       testimonial: {
-        text: "Depuis Paris, je voulais faire construire une villa moderne et sécurisée pour ma famille à Bamako. H2 Design a tout géré de A à Z : modélisation BIM en amont, rapports hebdomadaires avec photos de drone et appels vidéo en direct. Le résultat dépasse nos attentes, et ce sans aucune mauvaise surprise budgétaire !",
+        text: "Le projet avance bien, H2 Design gère les finitions de notre immeuble R+4 à Abidjan avec rigueur. Je suis chaque étape à distance grâce aux rapports photo et aux appels réguliers. Hâte de voir le résultat final.",
+        author: "Amadou D."
+      },
+      timeline: [
+        {
+          date: "Janvier 2026",
+          title: "Plan 3D & Aperçu du Résultat Final",
+          desc: "Réalisation du plan 3D complet du bâtiment R+4 pour donner un aperçu fidèle du rendu final : façade Alucobond, mur rideau vitré, menuiseries aluminium et PVC, carrelage, peinture, luminaires et sanitaires.",
+          visual: "/assets/opt_img_54.webp",
+          visualDesc: "Rendu 3D du bâtiment R+4 — aperçu du résultat final."
+        },
+        {
+          date: "Terminé",
+          title: "Carrelage & Façade Alucobond",
+          desc: "Pose du carrelage sur l'ensemble des 4 niveaux et habillage complet de la façade en panneaux Alucobond. Lots achevés et validés par le propriétaire.",
+          visual: "/assets/opt_img_43.webp",
+          visualDesc: "Carrelage posé et façade Alucobond terminée."
+        },
+        {
+          date: "En cours",
+          title: "Menuiseries, Mur Rideau, Peinture, Luminaires & Sanitaires",
+          desc: "Installation des portes et fenêtres en aluminium et PVC, pose du mur rideau vitré, application des peintures intérieures et extérieures, mise en place des luminaires et des équipements sanitaires.",
+          visual: "/assets/opt_img_49.webp",
+          visualDesc: "Lots de finition en cours de réalisation."
+        }
+      ]
+    },
+    'residence-sirakoro': {
+      title: "Résidence Familiale Sirakoro",
+      category: "Construction & Finition",
+      location: "Bamako, Mali",
+      img: "/assets/opt_img_52.webp",
+      drawerDesc: "Construction complète d'une résidence familiale R+1 de 300 m² à Sirakoro, Bamako. De la modélisation BIM à la remise des clés, chaque étape a été suivie et validée par le propriétaire.",
+      specs: [
+        { label: "Superficie", value: "300 m²" },
+        { label: "Lots réalisés", value: "BIM, Gros œuvre, Finitions" },
+        { label: "Typologie", value: "Résidence R+1" },
+        { label: "Statut", value: "Livré clés en main" },
+        { label: "Année", value: "2026" }
+      ],
+      testimonial: {
+        text: "H2 Design a construit notre résidence familiale à Sirakoro de A à Z. Le suivi était rigoureux, les délais respectés et le résultat à la hauteur de nos attentes. Une équipe sérieuse et professionnelle.",
+        author: "Fatoumata K."
+      },
+      timeline: [
+        {
+          date: "Mars 2025",
+          title: "Plans BIM & Modélisation 3D",
+          desc: "Conception 3D intégrale de la résidence familiale à Sirakoro. Modélisation BIM complète avec coordination des fluides, plans d'exécution et validation avec le propriétaire.",
+          visual: "/assets/opt_img_2.webp",
+          visualDesc: "Rendu 3D réaliste de la résidence."
+        },
+        {
+          date: "Juin 2025",
+          title: "Gros Œuvre & Élévation R+1",
+          desc: "Terrassement, fondations, élévation des murs porteurs, coulage des poteaux et de la dalle R+1 en béton armé. Charpente et toiture posées. Mise hors d'eau et hors d'air achevée.",
+          visual: "/assets/opt_img_41.webp",
+          visualDesc: "Structure R+1 en béton armé achevée."
+        },
+        {
+          date: "Novembre 2025",
+          title: "Finitions",
+          desc: "Pose des menuiseries, carrelage, revêtements muraux, peinture intérieure et extérieure. Installation plomberie et électricité. Aménagement complet de la résidence.",
+          visual: "/assets/opt_img_46.webp",
+          visualDesc: "Travaux de finition extérieure."
+        },
+        {
+          date: "Janvier 2026",
+          title: "Rendu Final & Livraison Clés en Main",
+          desc: "Vérifications finales, nettoyage et remise des clés au propriétaire. Résidence livrée conforme au rendu 3D initial.",
+          visual: "/assets/opt_img_52.webp",
+          visualDesc: "Résidence finalisée — livraison clés en main."
+        }
+      ]
+    },
+    'bureaux-egtf-sarl': {
+      title: "Bureaux EGTF SARL",
+      category: "Construction & Finition",
+      location: "Bamako, Mali",
+      img: "/assets/opt_img_50.webp",
+      drawerDesc: "Construction complète d'un immeuble de bureaux R+3 de 400 m² à Bamako. De la modélisation BIM à la décoration intérieure, chaque étape a été suivie et validée par le client.",
+      specs: [
+        { label: "Superficie", value: "400 m²" },
+        { label: "Lots réalisés", value: "BIM, Gros œuvre, Finitions, Décoration" },
+        { label: "Typologie", value: "Immeuble R+3" },
+        { label: "Statut", value: "Livré clés en main" },
+        { label: "Année", value: "2026" }
+      ],
+      testimonial: {
+        text: "H2 Design a réalisé nos bureaux de A à Z, de la conception jusqu'à la décoration. Le résultat est à la hauteur de l'image que nous voulons donner à notre entreprise. Délais et budget respectés.",
+        author: "Ibrahim T."
+      },
+      timeline: [
+        {
+          date: "Janvier 2025",
+          title: "Conception BIM & Architecture",
+          desc: "Modélisation complète du bâtiment de bureaux en BIM. Plans d'exécution et devis quantitatif estimatif détaillé validés avec le client.",
+          visual: "/assets/opt_img_40.webp",
+          visualDesc: "Modèle 3D des bureaux EGTF."
+        },
+        {
+          date: "Mai 2025",
+          title: "Gros Œuvre & Élévation R+3",
+          desc: "Terrassement, fondations et construction de la structure en béton armé sur 3 niveaux. Réalisation des dalles, poteaux et voiles porteurs. Mise hors d'eau et hors d'air achevée.",
+          visual: "/assets/opt_img_42.webp",
+          visualDesc: "Travaux de gros œuvre et maçonnerie."
+        },
+        {
+          date: "Septembre 2025",
+          title: "Finitions & Décoration",
+          desc: "Cloisons, faux plafonds, menuiseries aluminium, revêtements de sols et murs, peinture, plomberie et électricité. Décoration intérieure et aménagement des espaces de bureaux sur mesure.",
+          visual: "/assets/opt_img_47.webp",
+          visualDesc: "Finitions et décoration extérieure du bâtiment."
+        },
+        {
+          date: "Janvier 2026",
+          title: "Rendu Final & Livraison Clés en Main",
+          desc: "Vérifications finales, installation du mobilier et remise des clés au client. Bureaux livrés conformes au rendu 3D initial, prêts à accueillir les équipes.",
+          visual: "/assets/opt_img_50.webp",
+          visualDesc: "Bureaux EGTF SARL finalisés — livraison clés en main."
+        }
+      ]
+    },
+    'bâtiment-mixte-niamakoro-courani': {
+      title: "Bâtiment Mixte Niamakoro Courani",
+      category: "Construction & Finition",
+      location: "Bamako, Mali",
+      img: "/assets/opt_img_51.webp",
+      drawerDesc: "Construction complète d'un bâtiment mixte R+3 de 500 m² à Niamakoro Courani, Bamako. De la modélisation BIM à l'aménagement intérieur et extérieur, chaque étape a été suivie et validée par le propriétaire.",
+      specs: [
+        { label: "Superficie", value: "500 m²" },
+        { label: "Lots réalisés", value: "BIM, Gros œuvre, Finitions" },
+        { label: "Typologie", value: "Immeuble R+3" },
+        { label: "Statut", value: "Livré clés en main" },
+        { label: "Année", value: "2026" }
+      ],
+      testimonial: {
+        text: "H2 Design a construit notre bâtiment à Niamakoro Courani du début à la fin. Le travail de finition est remarquable, de la façade Alucobond aux rampes en Inox. Résultat conforme à nos attentes.",
         author: "Moussa S."
       },
       timeline: [
         {
-          date: "Mars 2023",
-          title: "Plans BIM & Études Techniques",
-          desc: "Conception 3D intégrale de la villa. Validation des plans de structure en béton armé et coordination des fluides (plomberie/électricité) via maquette numérique avec le client à distance.",
-          visual: "/assets/h2_interior_wood_1778682764614.png",
-          visualDesc: "Maquette 3D BIM & rendu intérieur partagés en direct."
+          date: "Février 2025",
+          title: "Plans BIM & Ingénierie",
+          desc: "Conception architecturale et modélisation BIM du bâtiment mixte. Études de structure et coordination technique validées avec le propriétaire.",
+          visual: "/assets/opt_img_35.webp",
+          visualDesc: "Intégration du projet dans son environnement."
         },
         {
-          date: "Juin 2023",
-          title: "Fondations & Terrassement",
-          desc: "Ouverture des fouilles et coulage des fondations superficielles. Analyse géotechnique validée. Inspecté et certifié conforme par notre bureau de contrôle partenaire à Bamako.",
-          visual: "/assets/h2_project_construction_1778682750140.png",
-          visualDesc: "Inspection des ferraillages avant coulage du béton de propreté."
+          date: "Juin 2025",
+          title: "Gros Œuvre & Élévation R+3",
+          desc: "Terrassement, fondations renforcées et élévation de la structure en béton armé sur 3 niveaux. Charpente et toiture posées. Mise hors d'eau et hors d'air achevée.",
+          visual: "/assets/opt_img_44.webp",
+          visualDesc: "Structure R+3 en béton armé achevée."
         },
         {
-          date: "Novembre 2023",
-          title: "Élévations & Gros Œuvre R+1",
-          desc: "Montage des murs porteurs en agglos pleins vibrés et coulage des dalles de compression du premier étage. Suivi drone régulier envoyé via l'espace client.",
-          visual: "/assets/h2_project_construction_1778682750140.png",
-          visualDesc: "Coulage de la dalle R+1 - Rapport drone du 18 Novembre."
+          date: "Novembre 2025",
+          title: "Finitions",
+          desc: "Carrelage, portes et fenêtres en aluminium PVC, façade en composite panel Alucobond, peinture, plomberie sanitaire et luminaires, rampes d'escalier et balcons en Inox, aménagement intérieur et extérieur.",
+          visual: "/assets/opt_img_45.webp",
+          visualDesc: "Travaux de finition — Peinture et revêtements."
         },
         {
-          date: "Mai 2024",
-          title: "Finition Premium & Remise des Clés",
-          desc: "Pose des menuiseries aluminium à double vitrage, peinture extérieure texturée et aménagement intérieur. Nettoyage final et remise des clés en direct au propriétaire venu pour l'occasion.",
-          visual: "/assets/h2_hero_villa_1778682722885.png",
-          visualDesc: "Villa finalisée - Vue extérieure sous le soleil de Bamako."
-        }
-      ]
-    },
-    'residence-sotuba': {
-      title: "Résidence Familiale Sotuba",
-      category: "Construction",
-      location: "Bamako, Mali",
-      img: "/assets/h2_project_construction_1778682750140.png",
-      specs: [
-        { label: "Superficie", value: "580 m²" },
-        { label: "Lots réalisés", value: "Terrassement, Gros œuvre" },
-        { label: "Typologie", value: "Résidence R+2" },
-        { label: "Suivi", value: "Rapports Drone & Visio" },
-        { label: "Avancement", value: "Gros œuvre complété à 100%" }
-      ],
-      testimonial: {
-        text: "Un travail d'ingénierie et de gros œuvre remarquable. Habitant à Lyon, j'ai pu valider chaque phase du béton armé grâce aux relevés topographiques et aux vidéos hebdomadaires. Très professionnel.",
-        author: "Abdoulaye T."
-      },
-      timeline: [
-        {
-          date: "Octobre 2024",
-          title: "Étude de Sol & Implantation",
-          desc: "Relevé topographique précis de la parcelle à Sotuba près du fleuve. Conception des fondations profondes adaptées au sol alluvionnaire.",
-          visual: "/assets/h2_project_construction_1778682750140.png",
-          visualDesc: "Implantation des axes au théodolite."
-        },
-        {
-          date: "Janvier 2025",
-          title: "Semelles & Soubassement",
-          desc: "Coulage des semelles filantes renforcées et réalisation du mur de soubassement étanche pour protéger le bâtiment contre les remontées capillaires.",
-          visual: "/assets/h2_project_construction_1778682750140.png",
-          visualDesc: "Coulage des longrines et étanchéité bitumineuse."
-        },
-        {
-          date: "Avril 2025",
-          title: "Élévation Gros Œuvre R+2",
-          desc: "Coulage des poteaux d'angles et des dalles en béton armé. Poteaux coulés avec coffrages métalliques garantissant une planéité parfaite.",
-          visual: "/assets/h2_project_construction_1778682750140.png",
-          visualDesc: "Vue d'ensemble du gros œuvre achevé - Vue aérienne drone."
-        }
-      ]
-    },
-    'renovation-badala': {
-      title: "Rénovation Badalabougou",
-      category: "Rénovation",
-      location: "Bamako, Mali",
-      img: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80",
-      specs: [
-        { label: "Superficie", value: "320 m²" },
-        { label: "Lots réalisés", value: "Plomberie, Peinture, Graffiato" },
-        { label: "Typologie", value: "Villa Basse" },
-        { label: "Type", value: "Rénovation complète de villa" },
-        { label: "Suivi", value: "Photos & Visio de validation" }
-      ],
-      testimonial: {
-        text: "H2 Design a redonné vie à notre ancienne villa de Badalabougou. Bien qu'étant loin en Allemagne, j'ai pu choisir les matériaux en visio et suivre l'avancement pas à pas. Le soin apporté aux finitions et à la plomberie est exceptionnel.",
-        author: "Aminata D."
-      },
-      timeline: [
-        {
-          date: "Mai 2023",
-          title: "Curetage & Démolition Ciblée",
-          desc: "Dépose des anciens revêtements de sol, sanitaires obsolètes et cloisons pour redistribuer les pièces de vie de manière plus fluide et lumineuse.",
-          visual: "/assets/h2_project_construction_1778682750140.png",
-          visualDesc: "Phase de curage intérieur et évacuation des gravats."
-        },
-        {
-          date: "Août 2023",
-          title: "Rénovation Réseaux & Plomberie",
-          desc: "Remplacement complet de la tuyauterie en cuivre par du PER multicouche et mise aux normes du tableau de distribution électrique générale.",
-          visual: "/assets/h2_interior_wood_1778682764614.png",
-          visualDesc: "Intégration des fourreaux encastrés pour l'éclairage LED."
-        },
-        {
-          date: "Décembre 2023",
-          title: "Pose Revêtements & Peinture Graffiato",
-          desc: "Application d'un enduit extérieur protecteur de type Graffiato résistant au climat sahélien, pose de carrelage en grès cérame poli et livraison.",
-          visual: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80",
-          visualDesc: "Salon rénové avec peinture blanche mate et éclairage intégré."
-        }
-      ]
-    },
-    'extension-hippo': {
-      title: "Extension & Rénovation Hippodrome",
-      category: "Extension & Rénovation",
-      location: "Bamako, Mali",
-      img: "/assets/h2_interior_wood_1778682764614.png",
-      specs: [
-        { label: "Superficie", value: "180 m²" },
-        { label: "Lots réalisés", value: "Menuiserie bois, Mobilier" },
-        { label: "Typologie", value: "Pavillon Bois" },
-        { label: "Matériaux", value: "Bois noble locaux, Acier noir" },
-        { label: "Suivi", value: "Atelier & Visio de chantier" }
-      ],
-      testimonial: {
-        text: "Pour notre extension en bois noble à l'Hippodrome, H2 Design a réalisé des menuiseries sur-mesure d'un raffinement rare au Mali. Le suivi vidéo en atelier et sur le chantier nous a rassurés tout au long du projet.",
-        author: "Fousseyni K."
-      },
-      timeline: [
-        {
-          date: "Février 2024",
-          title: "Étude Structure Bois & Fondations",
-          desc: "Calcul de charge pour l'extension et réalisation de micro-pieux en béton armé pour stabiliser la structure sans endommager le jardin existant.",
-          visual: "/assets/h2_project_construction_1778682750140.png",
-          visualDesc: "Implantation des micro-pieux béton."
-        },
-        {
-          date: "Mai 2024",
-          title: "Préfabrication & Menuiserie Bois",
-          desc: "Façonnage des poteaux et bardages en bois noble local traité autoclave dans nos ateliers. Relevé vidéo partagé avec le client en atelier.",
-          visual: "/assets/h2_interior_wood_1778682764614.png",
-          visualDesc: "Usinage des lambris bois dans l'atelier H2."
-        },
-        {
-          date: "Août 2024",
-          title: "Assemblage & Finitions Intérieures",
-          desc: "Montage rapide de la structure en bois, installation des baies vitrées coulissantes en acier noir et pose des meubles de rangement sur-mesure.",
-          visual: "/assets/h2_interior_wood_1778682764614.png",
-          visualDesc: "Livraison finale - Perspective chaleureuse du salon en bois."
+          date: "Janvier 2026",
+          title: "Rendu Final & Livraison Clés en Main",
+          desc: "Vérifications finales, nettoyage et remise des clés au propriétaire. Bâtiment livré conforme au rendu 3D initial.",
+          visual: "/assets/opt_img_51.webp",
+          visualDesc: "Bâtiment Mixte Niamakoro Courani — livraison clés en main."
         }
       ]
     }
@@ -377,6 +395,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (drawerTitle) drawerTitle.textContent = details.title;
     if (drawerLocation) {
       drawerLocation.innerHTML = `<span class="material-symbols-outlined">location_on</span> ${details.location}`;
+    }
+
+    // Update the journal description dynamically per project
+    const drawerSecDesc = drawer.querySelector('.drawer-sec-desc');
+    if (drawerSecDesc && details.drawerDesc) {
+      drawerSecDesc.textContent = details.drawerDesc;
     }
 
     // Build specs table
