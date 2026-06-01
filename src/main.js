@@ -12,7 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
       if (targetId === '#') {
         e.preventDefault();
         closeMenu();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        setTimeout(() => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 150);
         document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
         anchor.classList.add('active');
         return;
@@ -21,7 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!target) return;
       e.preventDefault();
       closeMenu();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(() => {
+        const offset = 100;
+        const targetTop = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: targetTop, behavior: 'smooth' });
+      }, 150);
       document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
       anchor.classList.add('active');
     });
