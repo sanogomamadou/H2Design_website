@@ -1,3 +1,9 @@
+import { inject } from '@vercel/analytics';
+import { injectSpeedInsights } from '@vercel/speed-insights';
+
+inject();
+injectSpeedInsights();
+
 import './style.css';
 
 document.addEventListener('DOMContentLoaded', () => {
